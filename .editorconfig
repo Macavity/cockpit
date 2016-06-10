@@ -1,0 +1,16 @@
+# editorconfig.org
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+
+# Indent 4 spaces for PHP & JS
+[*.{php,js,ts,tsx}]
+indent_style = space
+indent_size = 4

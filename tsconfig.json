@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "removeComments": true,
+        "noImplicitAny": false
+    },
+    "exclude": [
+        "node_modules",
+        "vendor",
+        "resources/assets/typescript/vendor.ts",
+        "resources/assets/typescript/typings/main",
+        "resources/assets/typescript/typings/main.d.ts"
+    ]
+}
