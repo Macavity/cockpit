@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Laravel 5 + Angular 2 Example</title>
-        <link rel="stylesheet" href="/css/app.css">
-        <base href="/"/>
-    </head>
-    <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Cockpit</title>
+  <base href="/"/>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
 
-        @yield('layout')
+<div class="container">
+  <div class="content">
+    <app>
+      @include('backend.partials.loading')
+    </app>
+  </div>
+</div>
 
-        @if (Config::get('app.debug'))
-            <script type="text/javascript">
-                document.write('<script src="//localhost:35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
-            </script>
-        @endif
-    </body>
+@include('backend.partials.scripts')
+
+@include('backend.partials.livereload')
+</body>
 </html>

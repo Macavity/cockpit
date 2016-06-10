@@ -21,21 +21,34 @@ require('laravel-elixir-webpack-ex');
 elixir(function(mix) {
     /**
      * Bootstrap
-     **/
-    var bootstrapPath = 'node_modules/bootstrap-less';
+     */
+    var bootstrapPath = 'node_modules/bootstrap';
 
-    mix.copy(bootstrapPath, 'resources/vendor/bootstrap/');
-    mix.copy(bootstrapPath + '/fonts', 'public/fonts');
+    mix.copy(bootstrapPath + '/dist/css/bootstrap.min.css', 'public/css');
+    mix.copy(bootstrapPath + '/dist/js/bootstrap.min.js', 'public/js');
+    mix.copy(bootstrapPath + '/dist/fonts', 'public/fonts');
+
+    /**
+     * Bootstrap Table
+     */
+    mix.copy('node_modules/bootstrap-table/dist/bootstrap-table.min.css', 'public/css');
+    mix.copy('node_modules/bootstrap-table/dist/bootstrap-table.min.js', 'public/js');
+
+    /**
+     * Font Awesome
+     */
+    mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'public/css');
+    mix.copy('node_modules/font-awesome/fonts', 'public/fonts');
 
     /**
      * JQuery
-     **/
+     */
     mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery');
 
     /**
-     * Less
+     * App CSS
      **/
-    mix.less('app.less');
+    mix.sass('app.scss');
 
     /**
      * Scripts webpack bundling and copying
