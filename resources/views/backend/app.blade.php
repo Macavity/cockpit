@@ -8,7 +8,7 @@
   <meta name="author" content="">
   <title>Cockpit</title>
   <base href="/"/>
-  <link rel="stylesheet" href="/css/app.css">
+  @include('backend.partials.styles')
 </head>
 <body>
 

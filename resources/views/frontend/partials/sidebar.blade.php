@@ -20,7 +20,7 @@
     <ul class="sidebar-menu">
       <li [class.active]="url == ''">
         <a [routerLink]="['/statistics']" (click)="updateUrl('')">
-          <i class="fa fa-dashboard"></i> <span>Statistics</span>
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
       <li [class.active]="url == 'projects'" (click)="updateUrl('projects')">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ExampleControllers;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use BannersCreator\Services\PSDParser;
