@@ -1,76 +1,100 @@
-var gulp = require("gulp");
-var bower = require("gulp-bower");
-var elixir = require("laravel-elixir");
-var elixirTypscript = require('elixir-typescript');
+//process.env.DISABLE_NOTIFIER = true;
 
-gulp.task('bower', function () {
-    return bower();
-});
+var elixir = require('laravel-elixir'),
+    path = require('path'),
+    webpack = require('webpack');
 
-var vendors = '../../assets/vendors/';
+require('laravel-elixir-livereload');
+require('laravel-elixir-webpack-ex');
 
-var paths = {
-    'jquery': vendors + 'jquery/dist',
-    'jqueryUi': vendors + 'jquery-ui',
-    'moment': vendors + 'moment',
-    'bootstrap': vendors + 'bootstrap/dist',
-    'fontawesome': vendors + 'font-awesome',
-    'eonasdanBootstrapDatetimepicker': vendors + 'eonasdan-bootstrap-datetimepicker/build',
-    'tether' : vendors + 'tether/dist'
-};
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
 
+elixir(function(mix) {
+    /**
+     * Bootstrap
+     **/
+    var bootstrapPath = 'node_modules/bootstrap-less';
 
-elixir(function (mix) {
+    mix.copy(bootstrapPath, 'resources/vendor/bootstrap/');
+    mix.copy(bootstrapPath + '/fonts', 'public/fonts');
 
-    mix.copy('node_modules/@angular', 'public/@angular');
-    mix.copy('node_modules/rxjs', 'public/rxjs');
-    mix.copy('node_modules/systemjs', 'public/systemjs');
-    mix.copy('node_modules/es6-promise', 'public/es6-promise');
-    mix.copy('node_modules/es6-shim', 'public/es6-shim');
-    mix.copy('node_modules/zone.js', 'public/zone.js');
-    mix.copy('node_modules/satellizer', 'public/satellizer');
-    mix.copy('node_modules/platform', 'public/platform');
-    mix.copy('node_modules/reflect-metadata', 'public/reflect-metadata');
+    /**
+     * JQuery
+     **/
+    mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery');
 
-    mix.copy('resources/assets/vendors/jquery-ui/themes/base/images', 'public/images');
+    /**
+     * Less
+     **/
+    mix.less('app.less');
 
-    mix.copy('resources/assets/vendors/c3/c3.min.css', 'public/css');
-    mix.copy('resources/assets/vendors/c3/c3.min.js', 'public/js');
-    mix.copy('resources/assets/vendors/d3/d3.min.js', 'public/js');
+    /**
+     * Scripts webpack bundling and copying
+     **/
 
-    mix.copy('resources/assets/vendors/font-awesome/fonts', 'public/fonts');
+    mix.webpack({
+        vendor: 'vendor.ts',
+        app: 'app.ts'
+    }, {
+        debug: true,
+        devtool: 'source-map',
+        resolve: {
+            extensions: ['', '.ts', '.js']
+        },
+        module: {
+            loaders: [
+                {
+                    test: /\.ts$/,
+                    loader: 'awesome-typescript-loader',
+                    exclude: /node_modules/
+                }
+            ]
+        },
+        plugins: [
+            new webpack.ProvidePlugin({
+                '__decorate': 'typescript-decorate',
+                '__extends': 'typescript-extends',
+                '__param': 'typescript-param',
+                '__metadata': 'typescript-metadata'
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor',
+                filename: 'vendor.js',
+                minChunks: Infinity
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'app',
+                filename: 'app.js',
+                minChunks: 4,
+                chunks: [
+                    'app'
+                ]
+            }),
+            /*new webpack.optimize.UglifyJsPlugin({
+                 compress: {
+                    warnings: false
+                 },
+                 minimize: true,
+                 mangle: false
+             })*/
+        ]
+    }, 'public/js', 'resources/assets/typescript');
 
-    //CSS Libraries
-    mix.styles([paths.fontawesome + "/css/font-awesome.min.css",
-        paths.jqueryUi + "/themes/base/core.css",
-        paths.tether + '/css/tether.css',
-        paths.eonasdanBootstrapDatetimepicker + '/css/bootstrap-datetimepicker.css'
-    ], 'public/css/styles.css');
-
-
-    //JS Libraries
-    mix.scripts([paths.jquery + "/jquery.js",
-        paths.jqueryUi + "/jquery-ui.min.js",
-        paths.tether + '/js/tether.js',
-        paths.bootstrap + "/js/bootstrap.min.js",
-        paths.moment + '/moment.js',
-        paths.eonasdanBootstrapDatetimepicker + '/js/bootstrap-datetimepicker.min.js'
-    ], 'public/js/scripts.js');
-
-
-    mix.typescript(
-        '/**/*.ts',
-        'public/js',
-        {
-            "target": "es5",
-            "module": "system",
-            "moduleResolution": "node",
-            "sourceMap": true,
-            "emitDecoratorMetadata": true,
-            "experimentalDecorators": true,
-            "removeComments": false,
-            "noImplicitAny": false
-        }
-    );
-
+    /**
+     * LiveReload
+     **/
+    mix.livereload([
+        'public/css/**/*',
+        'public/fonts/**/*',
+        'public/js/**/*'
+    ]);
 });

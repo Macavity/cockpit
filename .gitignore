@@ -3,3 +3,7 @@ node_modules/
 public/storage/
 storage/
 .env
+resources/assets/typescript/typings
+public/js
+public/fonts
+public/css
