@@ -4,7 +4,7 @@ import { FileUploadService } from '../../Services/FileUploadService/FileUploadSe
 import { ProgressBar } from '../UI/ProgressBar/ProgressBar';
 
 @Component({
-    'directives': [ProgressBar],
+    'directives': [<any>ProgressBar],
     'providers': [FileUploadService],
     'selector': 'state-template',
     'templateUrl': '/templates/FirstComponent.main'

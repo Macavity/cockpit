@@ -12,13 +12,9 @@
 </head>
 <body>
 
-<div class="container">
-  <div class="content">
-    <app>
-      @include('backend.partials.loading')
-    </app>
-  </div>
-</div>
+<app>
+  @include('backend.partials.loading')
+</app>
 
 @include('backend.partials.scripts')
 
