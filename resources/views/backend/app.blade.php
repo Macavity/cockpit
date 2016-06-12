@@ -8,16 +8,16 @@
   <meta name="author" content="">
   <title>Cockpit</title>
   <base href="/"/>
-  @include('backend.partials.styles')
+  @include('partials.styles')
 </head>
 <body>
 
 <app>
-  @include('backend.partials.loading')
+  @include('partials.loading')
 </app>
 
-@include('backend.partials.scripts')
+@include('partials.scripts')
 
-@include('backend.partials.livereload')
+@include('partials.livereload')
 </body>
 </html>

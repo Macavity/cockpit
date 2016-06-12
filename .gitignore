@@ -7,3 +7,6 @@ resources/assets/typescript/typings
 public/js
 public/fonts
 public/css
+resources/themes
+public/images
+resources/assets/sass/themes

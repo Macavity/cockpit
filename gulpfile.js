@@ -45,10 +45,17 @@ elixir(function(mix) {
      */
     mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery');
 
+    // Resources
+    mix.copy('resources/assets/fonts', 'public/fonts');
+    mix.copy('resources/assets/css', 'public/css');
+    mix.copy('resources/assets/images', 'public/images');
+
     /**
      * App CSS
      **/
     mix.sass('app.scss');
+
+    mix.sass('themes/**/*.scss', 'public/css/themes/');
 
     /**
      * Scripts webpack bundling and copying

@@ -1,13 +1,8 @@
-// vendor
-@import 'vendor/director';
 
-// utils
-@import 'bootstrap-helpers';
+// Bootstrap Core
+@import "core";
 
-// components
-@import 'components/loading';
+// Specific components
+@import "components";
 
-@import 'components/navbar';
-@import 'components/statistics';
-    
-@import 'general';
+@import "colors";
