@@ -11,20 +11,51 @@
 |
 */
 
-// Angular 2 base route resolving
+// Not logged in (Welcome)
 Route::get('/', [
-    'uses' => 'AngularRouteController@index',
+    'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
 
-// Angular 2 base `/edit` route resolving
-Route::get('/edit', 'AngularRouteController@index');
+// Authentication Routes
+Route::auth();
+
+Route::group([
+        'middleware' => ['web','auth'],
+        'prefix' => '/'
+    ], function() {
+
+    // Dashboard
+    Route::get('dashboard', [
+        'uses' => 'AngularRouteController@index',
+        'as' => 'dashboard'
+    ]);
+
+
+});
+
+// Route for frontend requests
+Route::group([
+    'middleware' => ['auth'],
+    'prefix' => '/api/'
+], function() {
+
+    Route::get('dashboard', [
+        'uses' => 'DashboardController@statistics',
+        'as' => 'dashboard'
+    ]);
+
+    // Upload file
+    Route::post('upload-file', 'UploadController@uploadFile');
+
+});
+
 
 // Angular 2 templates route
 Route::get('/templates/{template}', 'AngularTemplateController@index');
 
-// API route
-Route::post('/api/upload-file', 'UploadController@uploadFile');
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +70,10 @@ Route::post('/api/upload-file', 'UploadController@uploadFile');
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

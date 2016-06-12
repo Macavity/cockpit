@@ -10,7 +10,7 @@ export class DashboardService {
 
     constructor(private http: Http) { }
     
-    private url = '/statistics';
+    private url = '/dashboard';
     
     getDashboard(): Observable<Dashboard[]> {
         return this.http.get(this.url)

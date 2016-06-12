@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
     
     constructor(
         private location: Location,
-        private statisticsService: DashboardService
+        private dashboardService: DashboardService
     ) {}
     
     ngOnInit() {
@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
     }
 
     private getDashboard() {
-        this.statisticsService
+        this.dashboardService
             .getDashboard()
             .subscribe(
                 data => this.dashboard = <any> data,
