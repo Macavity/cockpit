@@ -19,32 +19,32 @@
     </form>
     <ul class="sidebar-menu">
       <li [class.active]="url == ''">
-        <a [routerLink]="['/statistics']" (click)="updateUrl('')">
+        <a [routerLink]="['/dashboard']" (click)="updateUrl('')">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
       <li [class.active]="url == 'projects'" (click)="updateUrl('projects')">
         <a [routerLink]="['/projects']">
           <i class="fa fa-gavel"></i> <span>Projects</span>
-          <span class="amount pull-right">@{{ statistics.projectCount }}</span>
+          <span class="amount pull-right">@{{ dashboard.projectCount }}</span>
         </a>
       </li>
       <li [class.active]="url == 'workers'" (click)="updateUrl('workers')">
         <a [routerLink]="['/workers']">
           <i class="fa fa-globe"></i> <span>Workers</span>
-          <span class="amount pull-right">@{{ statistics.workerCount }}</span>
+          <span class="amount pull-right">@{{ dashboard.workerCount }}</span>
         </a>
       </li>
       <li [class.active]="url == 'clients'" (click)="updateUrl('clients')">
         <a [routerLink]="['/clients']">
           <i class="fa fa-glass"></i> <span>Clients</span>
-          <span class="amount pull-right">@{{ statistics.clientCount }}</span>
+          <span class="amount pull-right">@{{ dashboard.clientCount }}</span>
         </a>
       </li>
       <li [class.active]="url == 'organisations'" (click)="updateUrl('organisations')">
         <a [routerLink]="['/organisations']">
           <i class="fa fa-glass"></i> <span>Organisations</span>
-          <span class="amount pull-right">@{{ statistics.organisationCount }}</span>
+          <span class="amount pull-right">@{{ dashboard.organisationCount }}</span>
         </a>
       </li>
     </ul>
