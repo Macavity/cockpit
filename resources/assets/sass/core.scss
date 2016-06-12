@@ -10,8 +10,8 @@
  * ---------------------------------------------------------------------------- */
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('/public/fonts/glyphicons-halflings-regular.eot');
-  src: url('/public/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../css/icons/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('/public/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../css/icons/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('/public/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('/fonts/glyphicons-halflings-regular.eot');
+  src: url('/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   font-size: 16px;
