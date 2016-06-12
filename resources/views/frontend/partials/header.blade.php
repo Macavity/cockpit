@@ -1,6 +1,5 @@
 <header class="header">
-  <a [routerLink]="['/']" class="logo">
-    Project Manager Cockpit
-  </a>
-  <navbar></navbar>
+  <main-navbar></main-navbar>
+  <!-- TODO Second Navbar if logged in -->
+  <second-navbar></second-navbar>
 </header>

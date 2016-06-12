@@ -1,9 +1,10 @@
 import { Component, Type } from '@angular/core';
-import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import { RouteConfig, RouterLink, Router, RouteDefinition } from '@angular/router-deprecated';
+//import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { BaseComponent } from "./base.component";
-import { FirstComponent } from './FirstComponent/FirstComponent';
-import { SecondComponent } from './SecondComponent/SecondComponent';
+
+import { LoggedInRouterOutlet } from './logged.in.outlet.directive';
 
 // Partials
 import { ContentComponent } from "./partials/content.component";
@@ -13,23 +14,36 @@ import { HeaderComponent } from "./partials/header.component";
 
 // Modules
 import { DashboardComponent } from "./dashboard.component";
+import { LoginComponent } from "./login.component";
 
-@Routes([
-    <any> {
+@RouteConfig([
+    <RouteDefinition> {
         path: '/',
+        redirectTo: ['/Dashboard']
+    },
+    <RouteDefinition> {
+        path: '/login',
+        as: 'Login',
+        component: LoginComponent
+    },
+    <RouteDefinition> {
+        path: '/dashboard',
+        as: 'Dashboard',
         component: DashboardComponent
     }
 ])
 @Component({
     'directives': <any> [
-        ROUTER_DIRECTIVES,
+        LoggedInRouterOutlet,
         HeaderComponent,
         NavbarComponent,
-        SidebarComponent,
-        ContentComponent
+        SidebarComponent
     ],
     'selector': 'app',
-    'templateUrl': '/templates/app'
+    'templateUrl': '/templates/frontend_layout'
 })
-export class AppComponent extends BaseComponent {
+export class AppComponent {
+    constructor() {
+        //
+    }
 }

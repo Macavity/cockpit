@@ -1,9 +1,5 @@
-<aside class="right-side">
+<div class="content-wrapper">
 
-    <section class="content">
-        <router-outlet></router-outlet>
-    </section>
+  <router-outlet></router-outlet>
 
-    <footer></footer>
-
-</aside>
+</div>

@@ -11,6 +11,7 @@
 |
 */
 
+
 // Not logged in (Welcome)
 Route::get('/', [
     'uses' => 'HomeController@index',
@@ -18,7 +19,7 @@ Route::get('/', [
 ]);
 
 // Authentication Routes
-Route::auth();
+/*Route::auth();
 
 Route::group([
         'middleware' => ['web','auth'],
@@ -32,21 +33,22 @@ Route::group([
     ]);
 
 
-});
+});*/
 
 // Route for frontend requests
 Route::group([
-    'middleware' => ['auth'],
+    //'middleware' => ['auth'],
     'prefix' => '/api/'
 ], function() {
 
-    Route::get('dashboard', [
-        'uses' => 'DashboardController@statistics',
-        'as' => 'dashboard'
-    ]);
+    // JWT Authentication
+    Route::resource('authenticate', 'AuthenticateController', ['only' => 'index']);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+
+    Route::get('dashboard', 'DashboardController@index');
 
     // Upload file
-    Route::post('upload-file', 'UploadController@uploadFile');
+    //Route::post('upload-file', 'UploadController@uploadFile');
 
 });
 

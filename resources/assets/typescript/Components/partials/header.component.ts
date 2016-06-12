@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+//import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router-deprecated';
 
 import {NavbarComponent} from "./navbar.component";
 
@@ -7,8 +8,7 @@ import {NavbarComponent} from "./navbar.component";
     selector: 'header',
     templateUrl: '/templates/partials.header',
     directives: [
-        ROUTER_DIRECTIVES,
-        <any>NavbarComponent
+        <any> NavbarComponent
     ]
 })
 export class HeaderComponent {

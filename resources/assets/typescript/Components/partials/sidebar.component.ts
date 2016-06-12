@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router-deprecated';
+//import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Location }          from '@angular/common';
 
 import {Dashboard} from "../dashboard/dashboard";
 import {DashboardService} from "../dashboard/dashboard.service";
 
 @Component({
-    selector: 'sidebar',
+    selector: 'second-navbar',
     templateUrl: '/templates/partials.sidebar',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ ],
     providers: [ DashboardService, Location ]
     
 })

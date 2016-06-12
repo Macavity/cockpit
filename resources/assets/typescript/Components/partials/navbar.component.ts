@@ -1,16 +1,20 @@
 import { Component } from '@angular/core'
-import { ROUTER_DIRECTIVES } from '@angular/router'
+import { Router } from '@angular/router-deprecated';
+//import { ROUTER_DIRECTIVES } from '@angular/router'
 import { Location } from '@angular/common';
 
 declare var jQuery: any;
 
 @Component({
-    selector: 'navbar',
+    selector: 'main-navbar',
     templateUrl: '/templates/partials.navbar',
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ ]
 })
 export class NavbarComponent {
-    
+
+    isGuest = true;
+    isUser = false;
+
     constructor(private location: Location) {}
     
     public toggleSidebar():void {

@@ -1,21 +1,22 @@
-import { ROUTER_DIRECTIVES } from '@angular/router';
+
+import { RouteConfig, RouterLink, Router, RouteDefinition } from '@angular/router-deprecated';
 import { Component, OnInit } from '@angular/core';
 
 import {DashboardService} from "./dashboard/dashboard.service";
 import {Dashboard} from "./dashboard/dashboard";
 
-@Component({
+@Component(<any> {
     selector: 'dashboard',
     templateUrl: '/templates/dashboard',
     providers: [ DashboardService ],
-    directives: [ ROUTER_DIRECTIVES ]
+    directives: [ RouterLink ]
 })
 export class DashboardComponent implements OnInit {
     
     private dashboard: Dashboard = new Dashboard();
     private errorMessage;
 
-    constructor(private statisticsService: DashboardService) {
+    constructor(private service: DashboardService) {
 
     }
 
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
     }
 
     private getDashboard() {
-        this.statisticsService
+        this.service
             .getDashboard()
             .subscribe(
                 data => this.dashboard = <any> data,

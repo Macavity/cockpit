@@ -12,10 +12,14 @@ export class DashboardService {
     
     private url = '/dashboard';
     
-    getDashboard(): Observable<Dashboard[]> {
-        return this.http.get(this.url)
-            .map(this.extractData)
-            .catch(this.handleError);
+    getDashboard() {
+        return this.http.get('/api/dashboard')
+            .subscribe(
+                response => {
+                    return response.json();
+                },
+                error => this.handleError(error)
+            );
     }
     
     private extractData(res: Response) {
