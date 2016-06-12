@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group has-feedback has-feedback-left {{ $errors->has('email') ? 'has-error' : '' }}">
-            <input name="password" type="text" class="form-control" placeholder="Password">
+            <input name="password" type="password" class="form-control" placeholder="Password">
             <div class="form-control-feedback">
                 <i class="icon-lock2 text-muted"></i>
             </div>
