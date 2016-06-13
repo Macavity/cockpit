@@ -29,11 +29,9 @@ export class SidebarComponent implements OnInit {
     }
 
     private getDashboard() {
-        this.dashboardService
-            .getDashboard()
-            .subscribe(
-                data => this.dashboard = <any> data,
-                error => this.errorMessage = <any> error
+        this.dashboardService.getDashboard()
+            .then(
+                data => this.dashboard = <any> data
             );
     }
     

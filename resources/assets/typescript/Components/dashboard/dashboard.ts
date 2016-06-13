@@ -12,6 +12,8 @@ export class Dashboard {
         clientCount?: number,
         organisationCount?: number
     ) {
+        console.log("Dashboard.constructor");
+
         this.projectCount = projectCount || 0;
         this.workerCount = workerCount || 0;
         this.clientCount = clientCount || 0;

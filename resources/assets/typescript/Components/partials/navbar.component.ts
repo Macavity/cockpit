@@ -1,35 +1,57 @@
-import { Component } from '@angular/core'
-import { Router } from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 //import { ROUTER_DIRECTIVES } from '@angular/router'
 import { Location } from '@angular/common';
 
-declare var jQuery: any;
+import { UserService } from "../../services/user.service";
+import { User } from "../../common/user";
+import {Language} from "../../common/language";
 
 @Component({
     selector: 'main-navbar',
     templateUrl: '/templates/partials.navbar',
-    directives: [ ]
+    directives: [ ROUTER_DIRECTIVES ]
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
     isGuest = true;
     isUser = false;
 
-    constructor(private location: Location) {}
-    
-    public toggleSidebar():void {
+    user: User;
 
-        //If window is small enough, enable sidebar push menu
-        if (jQuery(window).width() <= 992) {
-            jQuery('.row-offcanvas').toggleClass('active');
-            jQuery('.left-side').removeClass("collapse-left");
-            jQuery(".right-side").removeClass("strech");
-            jQuery('.row-offcanvas').toggleClass("relative");
-        } else {
-            //Else, enable content streching
-            jQuery('.left-side').toggleClass("collapse-left");
-            jQuery(".right-side").toggleClass("strech");
-        }
+    languages: Language[] = [];
+    currentLanguage: Language;
+
+    constructor(private location: Location, private userService: UserService) {
+        this.isGuest = !this.userService.isLoggedIn();
+        this.isUser = this.userService.isLoggedIn();
+
+        this.user = new User();
+
+        this.languages.push(new Language('en', 'English', '/images/flags/gb.png'));
+        this.languages.push(new Language('de', 'Deutsch', '/images/flags/de.png'));
     }
-    
+
+    ngOnInit() {
+        if (this.isUser) {
+            console.log("is user => get user from service");
+            this.userService.getCurrentUser()
+                .then(response => {
+                    console.log("navbar, user returned");
+                    this.user = new User(response);
+                    this.currentLanguage = this.languages[this.user.language];
+                });
+        }
+
+    }
+
+    logout() {
+        this.userService.logout();
+        window.location.href = "/login";
+    }
+
+    changeLanguage(lang: Language) {
+        console.log("clicked on changeLanguage");
+    }
+
 }

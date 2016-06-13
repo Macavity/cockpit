@@ -7,6 +7,8 @@ import { provide, enableProdMode } from '@angular/core';
 import { AuthConfig, AuthHttp } from "angular2-jwt";
 
 import { AppComponent } from './components/app.component.ts';
+import { UserService } from "./services/user.service";
+import { ApiService } from "./services/api.service";
 
 //enableProdMode();
 bootstrap(
@@ -22,6 +24,8 @@ bootstrap(
                 }), http);
             },
             deps: [Http]
-        })
+        }),
+        ApiService,
+        UserService
     ]
 );

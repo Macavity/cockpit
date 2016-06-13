@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import { Router, RouterLink } from '@angular/router-deprecated';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Validators} from "@angular/common";
 import { Http, Headers } from "@angular/http";
-import { contentHeaders } from "../common/headers";
+import { UserService } from "../services/user.service";
 
 @Component(<any> {
     selector: 'login-page',
@@ -11,25 +11,34 @@ import { contentHeaders } from "../common/headers";
     directives: [ RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES ]
 })
 export class LoginComponent {
-    constructor(public router: Router, public http: Http) { }
+    constructor(public router: Router, public http: Http, private userService: UserService) { }
 
-    login(event, username, password) {
+    hasEmailError = false;
+    hasGenericError = false;
+    errorMessage = "";
+
+    login(event, email, password) {
         event.preventDefault();
 
-        let body = JSON.stringify({ username, password });
+        this.userService.authenticate(email, password)
+            .then(
+                response => {
+                    console.log("success authenticating => redirect");
+                    localStorage.setItem('jwt', response.json().token);
+                    this.router.parent.navigateByUrl('/dashboard');
+                },
+                error => {
+                    console.warn("error logging in!");
 
-        this.http.post('/api/authenticate', body, {
-            headers: contentHeaders
-        })
-        .subscribe(
-            response => {
-                localStorage.setItem('jwt', response.json().token);
-                this.router.parent.navigateByUrl('/dashboard');
-            },
-            error => {
-                alert(error.text());
-                console.log(error.text());
-            }
-        );
+                    const errorType = error.json().error || "default";
+
+                    if (errorType == "invalid_credentials") {
+                        this.hasEmailError = true;
+                    } else {
+                        this.hasGenericError = true;
+                        this.errorMessage = error.json().message;
+                    }
+                }
+            );
     }
 }

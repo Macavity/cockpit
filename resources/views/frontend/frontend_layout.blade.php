@@ -14,8 +14,3 @@
 
 </div>
 <!-- /page container -->
-
-<div class="wrapper row-offcanvas row-offcanvas-left">
-
-
-</div>

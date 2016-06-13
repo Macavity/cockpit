@@ -2,8 +2,8 @@
 import { RouteConfig, RouterLink, Router, RouteDefinition } from '@angular/router-deprecated';
 import { Component, OnInit } from '@angular/core';
 
-import {DashboardService} from "./dashboard/dashboard.service";
-import {Dashboard} from "./dashboard/dashboard";
+import {DashboardService} from "./dashboard.service.ts";
+import {Dashboard} from "./dashboard";
 
 @Component(<any> {
     selector: 'dashboard',
@@ -25,11 +25,11 @@ export class DashboardComponent implements OnInit {
     }
 
     private getDashboard() {
-        this.service
+        /*this.service
             .getDashboard()
             .subscribe(
                 data => this.dashboard = <any> data,
                 error => this.errorMessage = <any> error
-            );
+            );*/
     }
 }

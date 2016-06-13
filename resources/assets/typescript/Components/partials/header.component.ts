@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 
 import {NavbarComponent} from "./navbar.component";
+import {UserService} from "../../services/user.service";
 
 @Component({
     selector: 'header',
@@ -12,7 +13,13 @@ import {NavbarComponent} from "./navbar.component";
     ]
 })
 export class HeaderComponent {
-    
-    constructor() {}
+
+    isUser = false;
+    isGuest = false;
+
+    constructor(private userService: UserService) {
+        this.isGuest = !this.userService.isLoggedIn();
+        this.isUser = this.userService.isLoggedIn();
+    }
 
 }

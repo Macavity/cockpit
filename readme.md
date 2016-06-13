@@ -13,13 +13,16 @@
 
 ```gulp```
 
+
 ## Watching
 
-```gulp-watch```
+```gulp watch```
+
 
 ## Server
 
 ```php artisan serve```
+
 
 ## Info
 

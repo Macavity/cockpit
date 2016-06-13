@@ -18,23 +18,6 @@ Route::get('/', [
     'as' => 'home'
 ]);
 
-// Authentication Routes
-/*Route::auth();
-
-Route::group([
-        'middleware' => ['web','auth'],
-        'prefix' => '/'
-    ], function() {
-
-    // Dashboard
-    Route::get('dashboard', [
-        'uses' => 'AngularRouteController@index',
-        'as' => 'dashboard'
-    ]);
-
-
-});*/
-
 // Route for frontend requests
 Route::group([
     //'middleware' => ['auth'],
@@ -47,6 +30,9 @@ Route::group([
 
     Route::get('dashboard', 'DashboardController@index');
 
+    Route::get('user/{id}', 'DashboardController@user');
+    Route::get('currentUser', 'DashboardController@currentUser');
+
     // Upload file
     //Route::post('upload-file', 'UploadController@uploadFile');
 
@@ -56,7 +42,10 @@ Route::group([
 // Angular 2 templates route
 Route::get('/templates/{template}', 'AngularTemplateController@index');
 
-
+Route::get('/{action}', [
+    'uses' => 'HomeController@index',
+    'as' => 'home'
+]);
 
 
 /*
