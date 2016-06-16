@@ -33,7 +33,7 @@ export class ApiService {
 
     post(action: string, data: Object): Promise<any> {
         //noinspection TypeScriptUnresolvedFunction
-        return this.http.post('/api/' + action, JSON.stringify(data), contentHeaders)
+        return this.http.post('/api/' + action, JSON.stringify(data), { headers: contentHeaders })
             .toPromise()
             .then()
             .catch(this.handleError);

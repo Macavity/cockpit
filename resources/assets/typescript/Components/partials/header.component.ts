@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 //import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Router } from '@angular/router-deprecated';
 
-import {NavbarComponent} from "./navbar.component";
-import {UserService} from "../../services/user.service";
+import { NavbarComponent } from "./navbar.component";
+import { UserService } from "../../services/user.service";
 
 @Component({
     selector: 'header',
@@ -12,14 +12,22 @@ import {UserService} from "../../services/user.service";
         <any> NavbarComponent
     ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-    isUser = false;
-    isGuest = false;
+    isLoggedIn: boolean = false;
+
+    title = "";
+    subtitle = "";
 
     constructor(private userService: UserService) {
-        this.isGuest = !this.userService.isLoggedIn();
-        this.isUser = this.userService.isLoggedIn();
+        //
     }
 
+    ngOnInit() {
+        this.userService.isLoggedIn.subscribe(this.onLoginStatusChange);
+    }
+
+    onLoginStatusChange = (response) => {
+        this.isLoggedIn = response;
+    };
 }

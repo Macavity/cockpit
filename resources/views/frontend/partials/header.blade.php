@@ -2,7 +2,7 @@
   <main-navbar></main-navbar>
 
   <!-- Second navbar -->
-  <div class="navbar navbar-default" id="navbar-second" *ngIf="isUser">
+  <div class="navbar navbar-default" id="navbar-second" *ngIf="isLoggedIn">
     <ul class="nav navbar-nav no-border visible-xs-block">
       <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
     </ul>

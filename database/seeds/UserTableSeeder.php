@@ -16,5 +16,11 @@ class UserTableSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => Hash::make('admin')
         ]);
+
+        factory(\App\User::class)->create([
+            'name' => 'user',
+            'email' => 'user@example.com',
+            'password' => Hash::make('user')
+        ]);
     }
 }

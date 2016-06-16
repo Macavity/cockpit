@@ -1,6 +1,5 @@
-import { Component, Type } from '@angular/core';
+import { Component, Type, OnInit, Inject } from '@angular/core';
 import { RouteConfig, RouterLink, Router, RouteDefinition } from '@angular/router-deprecated';
-//import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { BaseComponent } from "./base.component";
 
@@ -60,8 +59,25 @@ import { UserService } from "../services/user.service";
     'selector': 'app',
     'templateUrl': '/templates/frontend_layout'
 })
-export class AppComponent {
-    constructor() {
+export class AppComponent implements OnInit {
+
+    public isLoggedIn = false;
+    public isAdmin = false;
+
+    constructor(@Inject(UserService) private userService: UserService, @Inject(Router) private router: Router) {
         //
     }
+
+    ngOnInit() {
+        this.userService.isLoggedIn.subscribe(this.onLoginStatusChange);
+    }
+
+    onLoginStatusChange = (response) => {
+        this.isLoggedIn = response;
+        if (this.isLoggedIn) {
+            this.router.navigate(['/Dashboard']);
+        } else {
+            this.router.navigate(['/Login']);
+        }
+    };
 }

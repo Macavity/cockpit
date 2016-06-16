@@ -1,16 +1,16 @@
 <nav class="navbar navbar-inverse">
   <div class="navbar-header">
-    <a class="navbar-brand" href="/" *ngIf="isGuest">Cockpit</a>
-    <a class="navbar-brand" [routerLink]="['Dashboard']" *ngIf="isUser">Cockpit</a>
+    <a class="navbar-brand" href="/" *ngIf="!isLoggedIn">Cockpit</a>
+    <a class="navbar-brand" [routerLink]="['/Dashboard']" *ngIf="isLoggedIn">Cockpit</a>
 
     <ul class="nav navbar-nav pull-right visible-xs-block">
       <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
     </ul>
   </div>
   <div class="navbar-collapse collapse" id="navbar-mobile">
-    <ul class="nav navbar-nav navbar-right" *ngIf="isGuest">
+    <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedIn">
       <li>
-        <a [routerLink]="['Login']">
+        <a [routerLink]="['/Login']">
           <i class="icon-user"></i>
           <span class="visible-xs-inline-block position-right"> Login</span>
         </a>
@@ -23,7 +23,7 @@
         </a>
       </li>--}}
     </ul>
-    <ul class="nav navbar-nav navbar-right" *ngIf="isUser">
+    <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn">
       <!-- Language Switch -->
       <li class="dropdown language-switch" *ngIf="currentLanguage">
         <a class="dropdown-toggle" data-toggle="dropdown">

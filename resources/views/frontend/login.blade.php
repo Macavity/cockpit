@@ -25,13 +25,13 @@
       </div>
     </div>
 
-    <div class="form-group">
+    {{--<div class="form-group">
       <div class="checkbox">
         <label>
           <input type="checkbox" name="remember"> Remember Me
         </label>
       </div>
-    </div>
+    </div>--}}
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>

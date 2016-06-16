@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { Router, RouterLink } from '@angular/router-deprecated';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Validators} from "@angular/common";
 import { Http, Headers } from "@angular/http";
+
 import { UserService } from "../services/user.service";
 
 @Component(<any> {
@@ -21,12 +22,7 @@ export class LoginComponent {
         event.preventDefault();
 
         this.userService.authenticate(email, password)
-            .then(
-                response => {
-                    console.log("success authenticating => redirect");
-                    localStorage.setItem('jwt', response.json().token);
-                    this.router.parent.navigateByUrl('/dashboard');
-                },
+            .catch(
                 error => {
                     console.warn("error logging in!");
 

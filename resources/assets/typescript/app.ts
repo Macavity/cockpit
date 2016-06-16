@@ -1,4 +1,5 @@
-import { bootstrap }    from '@angular/platform-browser-dynamic';
+import { Title } from '@angular/platform-browser';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 
 import { FORM_PROVIDERS } from "@angular/common";
 import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
@@ -25,6 +26,7 @@ bootstrap(
             },
             deps: [Http]
         }),
+        Title,
         ApiService,
         UserService
     ]

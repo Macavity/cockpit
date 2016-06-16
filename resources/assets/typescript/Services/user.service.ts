@@ -1,29 +1,34 @@
 
 import { Injectable } from "@angular/core";
-import { Http, Headers } from "@angular/http";
-//import localStorage from "localStorage";
-import {ApiService} from "./api.service";
-import {User} from "../common/user";
+import { Http, Headers, Response } from "@angular/http";
+import { BehaviorSubject } from 'rxjs/Rx';
+
+import { ApiService } from "./api.service";
+import { User } from "../common/user";
 
 @Injectable()
 export class UserService {
-    private loggedIn = false;
+    public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+    public currentUser: User;
 
     constructor(private http: Http, private api: ApiService) {
-        this.loggedIn = !!localStorage.getItem('jwt');
+        this.isLoggedIn.next(!!localStorage.getItem('jwt'));
     }
 
     public logout() {
         localStorage.removeItem('jwt');
-        this.loggedIn = false;
-    }
-
-    public isLoggedIn() {
-        return this.loggedIn;
+        this.isLoggedIn.next(false);
     }
 
     public authenticate(email, password) {
-        return this.api.post('/api/authenticate', { email, password });
+        return this.api.post('authenticate', { email, password })
+            .then(
+                (response: Response) => {
+                    this.isLoggedIn.next(true);
+                    localStorage.setItem('jwt', response.json().token);
+                }
+            );
     }
 
     public getCurrentUser(): Promise<User> {

@@ -9,20 +9,11 @@
 5. Download Typings with `npm run typings`
 
 
-## Building
+## Commands
 
-```gulp```
-
-
-## Watching
-
-```gulp watch```
-
-
-## Server
-
-```php artisan serve```
-
+* Build: `gulp`
+* Watching: `gulp watch`
+* Server: `php artisan serve`
 
 ## Info
 

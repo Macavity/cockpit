@@ -14,8 +14,7 @@ import {Language} from "../../common/language";
 })
 export class NavbarComponent implements OnInit {
 
-    isGuest = true;
-    isUser = false;
+    isLoggedIn = false
 
     user: User;
 
@@ -23,8 +22,6 @@ export class NavbarComponent implements OnInit {
     currentLanguage: Language;
 
     constructor(private location: Location, private userService: UserService) {
-        this.isGuest = !this.userService.isLoggedIn();
-        this.isUser = this.userService.isLoggedIn();
 
         this.user = new User();
 
@@ -33,7 +30,10 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.isUser) {
+
+        this.userService.isLoggedIn.subscribe(this.onLoginStatusChange);
+
+        if (this.isLoggedIn) {
             console.log("is user => get user from service");
             this.userService.getCurrentUser()
                 .then(response => {
@@ -44,6 +44,10 @@ export class NavbarComponent implements OnInit {
         }
 
     }
+
+    onLoginStatusChange = (response) => {
+        this.isLoggedIn = response;
+    };
 
     logout() {
         this.userService.logout();

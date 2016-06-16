@@ -25,7 +25,9 @@
 </head>
 <body>
 
-    @yield('content')
+  @yield('content')
+
+  @include('partials.livereload')
 
 </body>
 </html>

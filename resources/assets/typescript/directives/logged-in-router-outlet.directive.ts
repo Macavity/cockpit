@@ -15,6 +15,7 @@ export class LoggedInRouterOutlet extends RouterOutlet {
             private parentRouter: Router,
             @Attribute('name') nameAttr: string,
             private userService: UserService ) {
+
         super(viewContainerRef, loader, parentRouter, nameAttr);
 
         this.publicRoutes = ['login'];
@@ -36,7 +37,7 @@ export class LoggedInRouterOutlet extends RouterOutlet {
      * @returns {boolean}
      */
     private canActivate(url) {
-        return this.publicRoutes.indexOf(url) !== -1 || this.userService.isLoggedIn();
+        return this.publicRoutes.indexOf(url) !== -1 || this.userService.isLoggedIn;
     }
 
 }
