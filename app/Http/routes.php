@@ -11,15 +11,48 @@
 |
 */
 
-
 // Not logged in (Welcome)
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
 
+/**
+ * API Routes
+ * https://github.com/dingo/api/wiki/Creating-API-Endpoints
+ */
+
+/** @var \Dingo\Api\Routing\Router $api */
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version(['v1'], [], function($api){
+
+    /*
+     * API v1
+     */
+    $api->group([
+        'prefix' => 'v1',
+        'namespace' => 'App\Http\Controllers\Api\V1'
+    ], function($api){
+        // JWT Authentication
+        //Route::resource('authenticate', 'AuthenticateController', ['only' => 'index']);
+        $api->post('authenticate', 'AuthenticateController@authenticate');
+    });
+
+
+    // Protected Routes
+    $api->group(['middleware' => 'auth'], function ($api) {
+        $api->get('user/{id}', 'App\Http\Controllers\DashboardController@user');
+        $api->get('currentUser', 'App\Http\Controllers\DashboardController@currentUser');
+
+        $api->get('dashboard', 'App\Http\Controllers\DashboardController@index');
+
+    });
+});
+
+
 // Route for frontend requests
-Route::group([
+/*Route::group([
     //'middleware' => ['auth'],
     'prefix' => '/api/'
 ], function() {
@@ -37,7 +70,7 @@ Route::group([
     //Route::post('upload-file', 'UploadController@uploadFile');
 
 });
-
+*/
 
 // Angular 2 templates route
 Route::get('/templates/{template}', 'AngularTemplateController@index');

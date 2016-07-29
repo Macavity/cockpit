@@ -47,7 +47,7 @@ import { UserService } from "../services/user.service";
     }
 ])
 @Component({
-    'directives': <any> [
+    'directives': <Type[]> [
         LoggedInRouterOutlet,
         HeaderComponent,
         NavbarComponent
@@ -64,7 +64,9 @@ export class AppComponent implements OnInit {
     public isLoggedIn = false;
     public isAdmin = false;
 
-    constructor(@Inject(UserService) private userService: UserService, @Inject(Router) private router: Router) {
+    constructor(
+        @Inject(UserService) private userService: UserService,
+        @Inject(Router) private router: Router) {
         //
     }
 

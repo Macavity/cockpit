@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.14 on 2016-06-12.
+ * Generated for Laravel 5.2.14 on 2016-07-12.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10167,6 +10167,284 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth{
+        
+        /**
+         * Find a user using the user identifier in the subject claim.
+         *
+         * @param bool|string $token
+         * @return mixed 
+         * @static 
+         */
+        public static function toUser($token = false){
+            return \Tymon\JWTAuth\JWTAuth::toUser($token);
+        }
+        
+        /**
+         * Generate a token using the user identifier as the subject claim.
+         *
+         * @param mixed $user
+         * @param array $customClaims
+         * @return string 
+         * @static 
+         */
+        public static function fromUser($user, $customClaims = array()){
+            return \Tymon\JWTAuth\JWTAuth::fromUser($user, $customClaims);
+        }
+        
+        /**
+         * Attempt to authenticate the user and return the token.
+         *
+         * @param array $credentials
+         * @param array $customClaims
+         * @return false|string 
+         * @static 
+         */
+        public static function attempt($credentials = array(), $customClaims = array()){
+            return \Tymon\JWTAuth\JWTAuth::attempt($credentials, $customClaims);
+        }
+        
+        /**
+         * Authenticate a user via a token.
+         *
+         * @param mixed $token
+         * @return mixed 
+         * @static 
+         */
+        public static function authenticate($token = false){
+            return \Tymon\JWTAuth\JWTAuth::authenticate($token);
+        }
+        
+        /**
+         * Refresh an expired token.
+         *
+         * @param mixed $token
+         * @return string 
+         * @static 
+         */
+        public static function refresh($token = false){
+            return \Tymon\JWTAuth\JWTAuth::refresh($token);
+        }
+        
+        /**
+         * Invalidate a token (add it to the blacklist).
+         *
+         * @param mixed $token
+         * @return bool 
+         * @static 
+         */
+        public static function invalidate($token = false){
+            return \Tymon\JWTAuth\JWTAuth::invalidate($token);
+        }
+        
+        /**
+         * Get the token.
+         *
+         * @return bool|string 
+         * @static 
+         */
+        public static function getToken(){
+            return \Tymon\JWTAuth\JWTAuth::getToken();
+        }
+        
+        /**
+         * Get the raw Payload instance.
+         *
+         * @param mixed $token
+         * @return \Tymon\JWTAuth\Payload 
+         * @static 
+         */
+        public static function getPayload($token = false){
+            return \Tymon\JWTAuth\JWTAuth::getPayload($token);
+        }
+        
+        /**
+         * Parse the token from the request.
+         *
+         * @param string $query
+         * @return \Tymon\JWTAuth\JWTAuth 
+         * @static 
+         */
+        public static function parseToken($method = 'bearer', $header = 'authorization', $query = 'token'){
+            return \Tymon\JWTAuth\JWTAuth::parseToken($method, $header, $query);
+        }
+        
+        /**
+         * Set the identifier.
+         *
+         * @param string $identifier
+         * @return $this 
+         * @static 
+         */
+        public static function setIdentifier($identifier){
+            return \Tymon\JWTAuth\JWTAuth::setIdentifier($identifier);
+        }
+        
+        /**
+         * Get the identifier.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getIdentifier(){
+            return \Tymon\JWTAuth\JWTAuth::getIdentifier();
+        }
+        
+        /**
+         * Set the token.
+         *
+         * @param string $token
+         * @return $this 
+         * @static 
+         */
+        public static function setToken($token){
+            return \Tymon\JWTAuth\JWTAuth::setToken($token);
+        }
+        
+        /**
+         * Set the request instance.
+         *
+         * @param \Tymon\JWTAuth\Request $request
+         * @static 
+         */
+        public static function setRequest($request){
+            return \Tymon\JWTAuth\JWTAuth::setRequest($request);
+        }
+        
+        /**
+         * Get the JWTManager instance.
+         *
+         * @return \Tymon\JWTAuth\JWTManager 
+         * @static 
+         */
+        public static function manager(){
+            return \Tymon\JWTAuth\JWTAuth::manager();
+        }
+        
+    }
+
+
+    class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory{
+        
+        /**
+         * Create the Payload instance.
+         *
+         * @param array $customClaims
+         * @return \Tymon\JWTAuth\Payload 
+         * @static 
+         */
+        public static function make($customClaims = array()){
+            return \Tymon\JWTAuth\PayloadFactory::make($customClaims);
+        }
+        
+        /**
+         * Add an array of claims to the Payload.
+         *
+         * @param array $claims
+         * @return $this 
+         * @static 
+         */
+        public static function addClaims($claims){
+            return \Tymon\JWTAuth\PayloadFactory::addClaims($claims);
+        }
+        
+        /**
+         * Add a claim to the Payload.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @return $this 
+         * @static 
+         */
+        public static function addClaim($name, $value){
+            return \Tymon\JWTAuth\PayloadFactory::addClaim($name, $value);
+        }
+        
+        /**
+         * Build out the Claim DTO's.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function resolveClaims(){
+            return \Tymon\JWTAuth\PayloadFactory::resolveClaims();
+        }
+        
+        /**
+         * Set the Issuer (iss) claim.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function iss(){
+            return \Tymon\JWTAuth\PayloadFactory::iss();
+        }
+        
+        /**
+         * Set the Issued At (iat) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function iat(){
+            return \Tymon\JWTAuth\PayloadFactory::iat();
+        }
+        
+        /**
+         * Set the Expiration (exp) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function exp(){
+            return \Tymon\JWTAuth\PayloadFactory::exp();
+        }
+        
+        /**
+         * Set the Not Before (nbf) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function nbf(){
+            return \Tymon\JWTAuth\PayloadFactory::nbf();
+        }
+        
+        /**
+         * Set the token ttl (in minutes).
+         *
+         * @param int $ttl
+         * @return $this 
+         * @static 
+         */
+        public static function setTTL($ttl){
+            return \Tymon\JWTAuth\PayloadFactory::setTTL($ttl);
+        }
+        
+        /**
+         * Get the token ttl.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function getTTL(){
+            return \Tymon\JWTAuth\PayloadFactory::getTTL();
+        }
+        
+        /**
+         * Set the refresh flow.
+         *
+         * @param bool $refreshFlow
+         * @return $this 
+         * @static 
+         */
+        public static function setRefreshFlow($refreshFlow = true){
+            return \Tymon\JWTAuth\PayloadFactory::setRefreshFlow($refreshFlow);
         }
         
     }
