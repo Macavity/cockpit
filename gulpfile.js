@@ -1,10 +1,9 @@
 //process.env.DISABLE_NOTIFIER = true;
 
-var elixir = require('laravel-elixir'),
-    path = require('path'),
-    webpack = require('webpack');
+var Elixir = require('laravel-elixir');
+var path = require('path');
+var webpack = require('webpack');
 
-require('laravel-elixir-livereload');
 require('laravel-elixir-webpack-ex');
 
 /*
@@ -17,8 +16,36 @@ require('laravel-elixir-webpack-ex');
  | file for our application, as well as publishing vendor resources.
  |
  */
+var Task = Elixir.Task;
 
-elixir(function(mix) {
+
+/**
+ * Custom Elixir Task to copy vendor libraries
+ * (only during development)
+ */
+Elixir.extend('vendor', function (src, output) {
+
+    var paths = new Elixir.GulpPaths().src(src).output(output);
+
+    new Task('vendor', function ($) {
+        this.recordStep("Copy Vendor Libraries");
+
+        return gulp.src(paths.src.path, {base: './node_modules/'})
+            .pipe(gulp.dest(paths.output.path));
+    }, paths).watch('package.json');
+
+
+});
+
+Elixir(function(mix) {
+
+    /**
+     * App CSS
+     **/
+    mix.sass('app.scss');
+
+    mix.sass('themes/**/*.scss', 'public/css/themes/');
+
     /**
      * Bootstrap
      */
@@ -29,41 +56,36 @@ elixir(function(mix) {
     mix.copy(bootstrapPath + '/dist/fonts', 'public/fonts');
 
     /**
-     * Bootstrap Table
+     * Copy assets
      */
-    mix.copy('node_modules/bootstrap-table/dist/bootstrap-table.min.css', 'public/css');
-    mix.copy('node_modules/bootstrap-table/dist/bootstrap-table.min.js', 'public/js');
-
-    /**
-     * Font Awesome
-     */
-    mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'public/css');
-    mix.copy('node_modules/font-awesome/fonts', 'public/fonts');
-
-    /**
-     * JQuery
-     */
-    mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery');
-
-    // Resources
     mix.copy('resources/assets/fonts', 'public/fonts');
     mix.copy('resources/assets/css', 'public/css');
     mix.copy('resources/assets/images', 'public/images');
 
-    /**
-     * App CSS
-     **/
-    mix.sass('app.scss');
+    // Copy Angular templates
+    mix.copy('resources/assets/typescript/**/*.html', 'public/js/');
 
-    mix.sass('themes/**/*.scss', 'public/css/themes/');
+    /**
+     * Copy vendor assets
+     */
+    var libs = [
+        'node_modules/reflect-metadata/Reflect.js',
+        'node_modules/reflect-metadata/Reflect.js.map',
+        'node_modules/zone.js/dist/zone.js',
+        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/font-awesome/css/font-awesome.min.css',
+        'node_modules/font-awesome/fonts/',
+    ];
+    mix.vendor(libs, 'public/vendor/');
+
 
     /**
      * Scripts webpack bundling and copying
      **/
-
     mix.webpack({
         vendor: 'vendor.ts',
-        app: 'app.ts'
+        main: 'app.ts'
     }, {
         debug: true,
         devtool: 'source-map',
@@ -75,8 +97,18 @@ elixir(function(mix) {
                 {
                     test: /\.ts$/,
                     loader: 'awesome-typescript-loader',
-                    exclude: /node_modules/
-                }
+                    exclude: [
+                        /\.(spec|e2e)\.ts$/,
+                        /\.d\.ts$/,
+                        /node_modules/,
+                        /typings/,
+                        /public/,
+                    ]
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'raw-loader',
+                },
             ]
         },
         plugins: [
@@ -92,29 +124,25 @@ elixir(function(mix) {
                 minChunks: Infinity
             }),
             new webpack.optimize.CommonsChunkPlugin({
-                name: 'app',
-                filename: 'app.js',
+                name: 'main',
+                filename: 'main.js',
                 minChunks: 4,
                 chunks: [
-                    'app'
+                    'main'
                 ]
             }),
             /*new webpack.optimize.UglifyJsPlugin({
-                 compress: {
-                    warnings: false
-                 },
-                 minimize: true,
-                 mangle: false
+             compress: {
+             warnings: false
+             },
+             minimize: true,
+             mangle: false
              })*/
         ]
     }, 'public/js', 'resources/assets/typescript');
 
-    /**
-     * LiveReload
-     **/
-    mix.livereload([
-        'public/css/**/*',
-        'public/fonts/**/*',
-        'public/js/**/*'
-    ]);
+    mix.browserSync({
+        proxy: process.env.BROWSERSYNC_PROXY_URL
+    });
+
 });
