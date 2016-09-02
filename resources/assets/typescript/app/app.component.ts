@@ -1,46 +1,72 @@
 
-import { Component, OnInit, Type } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Type, OnDestroy } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 
-import { UserService } from "./Services/user.service";
-import { ApiService } from "./Services/api.service";
-import { NavbarComponent } from "./Components/partials/navbar.component";
-import { HeaderComponent } from "./Components/partials/header.component";
-import { LoggedInRouterOutlet } from "./directives/logged-in-router-outlet.directive";
+import { UserService } from "./services/user.service";
+import { User } from "./common/user";
+import { HeaderComponent } from "./components/header.component";
+import { BehaviorSubject } from "rxjs";
+import { AuthService } from "./services/auth.service";
+
 @Component({
-    'directives': <Type[]> [
-        LoggedInRouterOutlet,
-        HeaderComponent,
-        NavbarComponent
+    selector: 'app',
+    template: require('./app.component.html'),
+    directives: [
+        HeaderComponent
     ],
     providers: [
-        ApiService,
-        UserService
+        RouterModule
     ],
-    'selector': 'app',
-    'templateUrl': '/templates/frontend_layout'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
-    public isLoggedIn = false;
+    public isLoggedIn: boolean = null;
     public isAdmin = false;
 
+    public user: BehaviorSubject<User> = new BehaviorSubject<User>(new User());
+
     constructor(
+        private authService: AuthService,
         private userService: UserService,
-        private router: Router) {
-        //
+        private router: Router
+    ) {
+        // Check Login status initially
+        this.onLoginStatusChange(this.authService.isAuthenticated());
     }
 
-    ngOnInit() {
-        this.userService.isLoggedIn.subscribe(this.onLoginStatusChange);
+    ngOnInit(): void {
+        this.authService.isLoggedIn.subscribe(this.onLoginStatusChange);
     }
 
-    onLoginStatusChange = (response) => {
+    ngOnDestroy() {
+        this.authService.isLoggedIn.unsubscribe();
+    }
+
+    /**
+     * @callback
+     * @param response
+     */
+    private onLoginStatusChange = (response) => {
+
+        if(response === this.isLoggedIn) {
+            return;
+        }
+
+        console.log("onLoginStatusChange", response);
         this.isLoggedIn = response;
-        if (this.isLoggedIn) {
-            this.router.navigate(['/Dashboard']);
-        } else {
-            this.router.navigate(['/Login']);
+
+        // Refresh the current user.
+        if(this.isLoggedIn) {
+            this.userService.getCurrentUser().then(
+                response => {
+                    this.user.next(response);
+                    // TODO If user is logged in, redirect to dashboard.
+                }
+            );
+        }
+        else {
+            this.router.navigateByUrl('/login');
         }
     };
+
 }
