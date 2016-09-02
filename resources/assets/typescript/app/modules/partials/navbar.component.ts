@@ -14,7 +14,7 @@ import {Language} from "../../common/language";
 })
 export class NavbarComponent implements OnInit {
 
-    isLoggedIn = false
+    isLoggedIn = false;
 
     user: User;
 

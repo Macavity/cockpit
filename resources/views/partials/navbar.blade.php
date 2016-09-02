@@ -8,7 +8,7 @@
   </div>
   <div class="navbar-collapse collapse" id="navbar-mobile">
     <ul class="nav navbar-nav navbar-right">
-      @if (Auth::guest())
+      @if (!Auth::check())
         <li>
           <a href="{{ url('/login') }}">
             <i class="icon-user"></i>

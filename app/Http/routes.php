@@ -11,11 +11,7 @@
 |
 */
 
-// Not logged in (Welcome)
-Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as' => 'home'
-]);
+use Dingo\Api\Routing\Router;
 
 /**
  * API Routes
@@ -25,61 +21,28 @@ Route::get('/', [
 /** @var \Dingo\Api\Routing\Router $api */
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version(['v1'], [], function($api){
-
-    /*
-     * API v1
-     */
-    $api->group([
-        'prefix' => 'v1',
-        'namespace' => 'App\Http\Controllers\Api\V1'
-    ], function($api){
-        // JWT Authentication
-        //Route::resource('authenticate', 'AuthenticateController', ['only' => 'index']);
-        $api->post('authenticate', 'AuthenticateController@authenticate');
-    });
-
-
-    // Protected Routes
-    $api->group(['middleware' => 'auth'], function ($api) {
-        $api->get('user/{id}', 'App\Http\Controllers\DashboardController@user');
-        $api->get('currentUser', 'App\Http\Controllers\DashboardController@currentUser');
-
-        $api->get('dashboard', 'App\Http\Controllers\DashboardController@index');
-
-    });
-});
-
-
-// Route for frontend requests
-/*Route::group([
-    //'middleware' => ['auth'],
-    'prefix' => '/api/'
-], function() {
+$api->version(['v1'], [
+    'namespace' => 'App\Http\Controllers\Api'
+], function(Router $api){
 
     // JWT Authentication
-    Route::resource('authenticate', 'AuthenticateController', ['only' => 'index']);
-    Route::post('authenticate', 'AuthenticateController@authenticate');
+    $api->post('authenticate', 'ApiController@authenticate');
+    $api->post('logout', 'ApiController@logout');
+    $api->post('token', 'ApiController@getToken');
 
-    Route::get('dashboard', 'DashboardController@index');
+    // Protected Routes
+    $api->group([
+        'middleware' => 'jwt.auth'
+    ], function (Router $api) {
 
-    Route::get('user/{id}', 'DashboardController@user');
-    Route::get('currentUser', 'DashboardController@currentUser');
+        $api->get('/users', 'UserController@index');
+        $api->get('/users/me', 'UserController@getCurrentUser');
+        $api->get('/users/{id}', 'UserController@show');
+        $api->post('/users/{id}', 'UserController@update');
 
-    // Upload file
-    //Route::post('upload-file', 'UploadController@uploadFile');
 
+    });
 });
-*/
-
-// Angular 2 templates route
-Route::get('/templates/{template}', 'AngularTemplateController@index');
-
-Route::get('/{action}', [
-    'uses' => 'HomeController@index',
-    'as' => 'home'
-]);
-
 
 /*
 |--------------------------------------------------------------------------
@@ -93,11 +56,13 @@ Route::get('/{action}', [
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/', [
+        'uses' => 'HomeController@index',
+        'as' => 'home'
+    ]);
 });
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-});
+/*
+ * Every other route gets served by the AngularController
+ */
+Route::get('/{action?}', 'AngularRouteController@serve');
