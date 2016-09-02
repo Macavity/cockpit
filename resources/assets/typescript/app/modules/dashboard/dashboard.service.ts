@@ -4,13 +4,13 @@ import { Observable }     from 'rxjs/Observable';
 import 'rxjs';
 
 import {Dashboard} from "./dashboard";
-import {ApiService} from "../../services/api.service";
+import {ApiService} from "../../Services/api.service";
 
 @Injectable()
 export class DashboardService {
 
     constructor(private api: ApiService) { }
-    
+
     getDashboard(): Promise<Dashboard> {
         return this.api.getSecure('dashboard')
             .then(

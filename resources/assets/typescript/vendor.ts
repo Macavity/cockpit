@@ -18,3 +18,12 @@ import '@angular/upgrade';
 
 // RxJS
 import 'rxjs';
+
+import { ENV } from "./environment";
+
+if ('production' === ENV) {
+    // Production
+
+} else {
+    // Development
+}

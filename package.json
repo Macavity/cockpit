@@ -11,7 +11,7 @@
     "typings": "^0.8.1"
   },
   "scripts": {
-    "typings": "cd resources/assets/typescript && typings install"
+    "typings": "typings install"
   },
   "dependencies": {
     "@angular/common": "^2.0.0-rc.5",

@@ -3,7 +3,7 @@ import { RouteConfig, RouterLink, Router, RouteDefinition } from '@angular/route
 
 import { BaseComponent } from "./base.component";
 
-import { LoggedInRouterOutlet } from './../directives/logged-in-router-outlet.directive.ts';
+import { LoggedInRouterOutlet } from '../directives/logged-in-router-outlet.directive.ts';
 
 // Partials
 import { ContentComponent } from "./partials/content.component";
@@ -16,8 +16,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component.ts";
 import { LoginComponent } from "./login.component";
 
 // Services
-import { ApiService } from "../services/api.service";
-import { UserService } from "../services/user.service";
+import { ApiService } from "../Services/api.service";
+import { UserService } from "../Services/user.service";
 
 @RouteConfig([
     <RouteDefinition> {
@@ -46,40 +46,4 @@ import { UserService } from "../services/user.service";
         component: DashboardComponent
     }
 ])
-@Component({
-    'directives': <Type[]> [
-        LoggedInRouterOutlet,
-        HeaderComponent,
-        NavbarComponent
-    ],
-    providers: [
-        ApiService,
-        UserService
-    ],
-    'selector': 'app',
-    'templateUrl': '/templates/frontend_layout'
-})
-export class AppComponent implements OnInit {
 
-    public isLoggedIn = false;
-    public isAdmin = false;
-
-    constructor(
-        @Inject(UserService) private userService: UserService,
-        @Inject(Router) private router: Router) {
-        //
-    }
-
-    ngOnInit() {
-        this.userService.isLoggedIn.subscribe(this.onLoginStatusChange);
-    }
-
-    onLoginStatusChange = (response) => {
-        this.isLoggedIn = response;
-        if (this.isLoggedIn) {
-            this.router.navigate(['/Dashboard']);
-        } else {
-            this.router.navigate(['/Login']);
-        }
-    };
-}

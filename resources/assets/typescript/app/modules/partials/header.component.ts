@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 
 import { NavbarComponent } from "./navbar.component";
-import { UserService } from "../../services/user.service";
+import { UserService } from "../../Services/user.service";
 
 @Component({
     selector: 'header',

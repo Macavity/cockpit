@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router-deprecated';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Validators} from "@angular/common";
 import { Http, Headers } from "@angular/http";
 
-import { UserService } from "../services/user.service";
+import { UserService } from "../Services/user.service";
 
 @Component(<any> {
     selector: 'login-page',

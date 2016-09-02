@@ -3,7 +3,7 @@ import { Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-dep
 //import { ROUTER_DIRECTIVES } from '@angular/router'
 import { Location } from '@angular/common';
 
-import { UserService } from "../../services/user.service";
+import { UserService } from "../../Services/user.service";
 import { User } from "../../common/user";
 import {Language} from "../../common/language";
 
