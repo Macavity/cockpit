@@ -4,7 +4,7 @@ import { Observable }     from 'rxjs/Observable';
 import 'rxjs';
 
 import {Dashboard} from "./dashboard";
-import {ApiService} from "../../Services/api.service";
+import { ApiService } from "../../services/api.service";
 
 @Injectable()
 export class DashboardService {
@@ -12,7 +12,7 @@ export class DashboardService {
     constructor(private api: ApiService) { }
 
     getDashboard(): Promise<Dashboard> {
-        return this.api.getSecure('dashboard')
+        return this.api.authGet('dashboard')
             .then(
                 (response) => {
                     console.log("DashboardService.getDashboard -> response");

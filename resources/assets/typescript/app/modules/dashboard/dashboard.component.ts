@@ -1,18 +1,16 @@
 
-import { RouteConfig, RouterLink, Router, RouteDefinition } from '@angular/router-deprecated';
 import { Component, OnInit } from '@angular/core';
 
 import {DashboardService} from "./dashboard.service.ts";
 import {Dashboard} from "./dashboard";
 
-@Component(<any> {
+@Component({
     selector: 'dashboard',
-    templateUrl: '/templates/dashboard',
+    template: require('./dashboard.html'),
     providers: [ DashboardService ],
-    directives: [ RouterLink ]
 })
 export class DashboardComponent implements OnInit {
-    
+
     private dashboard: Dashboard = new Dashboard();
     private errorMessage;
 
