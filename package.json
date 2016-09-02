@@ -30,15 +30,15 @@
     "zone.js": "~0.6.12"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.28",
-    "@types/jasmine": "^2.2.29",
-    "@types/node": "^4.0.29",
-    "@types/protractor": "^1.5.16",
-    "@types/selenium-webdriver": "^2.44.26",
-    "@types/source-map": "^0.1.26",
-    "@types/uglify-js": "^2.0.27",
-    "@types/webpack": "^1.12.29",
-    "awesome-typescript-loader": "^2.2.1",
+    "@types/core-js": "0.9.28",
+    "@types/jasmine": "2.2.29",
+    "@types/node": "4.0.29",
+    "@types/protractor": "1.5.16",
+    "@types/selenium-webdriver": "2.44.26",
+    "@types/source-map": "0.1.26",
+    "@types/uglify-js": "2.0.27",
+    "@types/webpack": "1.12.29",
+    "awesome-typescript-loader": "2.2.1",
     "codelyzer": "~0.0.21",
     "dotenv": "^2.0.0",
     "elixir-typescript": "^2.0.0",
@@ -68,7 +68,7 @@
     "ts-node": "^0.9.1",
     "tslint": "^3.7.1",
     "typedoc": "^0.4.4",
-    "typescript": "^2.0.0-beta",
+    "typescript": "2.0.0",
     "jquery": "^3.1.0",
     "webpack": "^1.13.2"
   }

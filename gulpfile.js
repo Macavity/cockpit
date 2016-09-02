@@ -1,10 +1,12 @@
 //process.env.DISABLE_NOTIFIER = true;
 
 var Elixir = require('laravel-elixir');
-var path = require('path');
-var webpack = require('webpack');
+
+const gulp = require('gulp');
 
 require('laravel-elixir-webpack-ex');
+var webpack = require('webpack');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -41,19 +43,10 @@ Elixir(function(mix) {
 
     /**
      * App CSS
-     **/
+     */
     mix.sass('app.scss');
 
     mix.sass('themes/**/*.scss', 'public/css/themes/');
-
-    /**
-     * Bootstrap
-     */
-    var bootstrapPath = 'node_modules/bootstrap';
-
-    mix.copy(bootstrapPath + '/dist/css/bootstrap.min.css', 'public/css');
-    mix.copy(bootstrapPath + '/dist/js/bootstrap.min.js', 'public/js');
-    mix.copy(bootstrapPath + '/dist/fonts', 'public/fonts');
 
     /**
      * Copy assets
@@ -69,13 +62,18 @@ Elixir(function(mix) {
      * Copy vendor assets
      */
     var libs = [
+        // Angular Dependancies
         'node_modules/reflect-metadata/Reflect.js',
         'node_modules/reflect-metadata/Reflect.js.map',
         'node_modules/zone.js/dist/zone.js',
+        // Bootstrap
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+        'node_modules/bootstrap-sass/assets/fonts/bootstrap/',
+        // JQuery
         'node_modules/jquery/dist/jquery.min.js',
-        'node_modules/font-awesome/css/font-awesome.min.css',
-        'node_modules/font-awesome/fonts/',
+        // Font Awesome
+        //'node_modules/font-awesome/css/font-awesome.min.css',
+        //'node_modules/font-awesome/fonts'
     ];
     mix.vendor(libs, 'public/vendor/');
 
@@ -85,7 +83,7 @@ Elixir(function(mix) {
      **/
     mix.webpack({
         vendor: 'vendor.ts',
-        main: 'app.ts'
+        main: 'main.ts'
     }, {
         debug: true,
         devtool: 'source-map',
@@ -142,7 +140,7 @@ Elixir(function(mix) {
     }, 'public/js', 'resources/assets/typescript');
 
     mix.browserSync({
-        proxy: process.env.BROWSERSYNC_PROXY_URL
+        proxy: 'cockpit.local'
     });
 
 });
