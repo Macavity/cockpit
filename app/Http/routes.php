@@ -65,4 +65,4 @@ Route::group(['middleware' => ['web']], function () {
 /*
  * Every other route gets served by the AngularController
  */
-Route::get('/{action?}', 'AngularRouteController@serve');
+Route::get('/{action?}', 'AngularRouteController@index');

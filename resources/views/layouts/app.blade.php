@@ -30,8 +30,6 @@
   <link href="{{asset('css/icomoon.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
 
-  @include('partials.scripts')
-
   <style>
     body {
       font-family: 'Lato';
@@ -45,5 +43,6 @@
     @include('partials.frontend_app')
   @show
 
+  @include('partials.scripts')
 </body>
 </html>
