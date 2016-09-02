@@ -1,78 +1,122 @@
-import { Injectable }     from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+
+import { Observable } from 'rxjs/Observable';
 import 'rxjs';
 import 'rxjs/add/operator/toPromise';
-
-import { contentHeaders } from "../common/headers";
+import { AuthHttp } from "angular2-jwt";
 
 @Injectable()
 export class ApiService {
-
     jwt: string;
 
-    constructor(private http: Http) {
+    endpoint: string = '/api/';
 
-        this.jwt = localStorage.getItem('jwt');
+    private contentHeaders: Headers;
 
+    constructor(private http: Http, private authHttp: AuthHttp)
+    {
+        this.contentHeaders = new Headers();
+        this.contentHeaders.append('Accept', 'application/json');
+        this.contentHeaders.append('Content-Type', 'application/json');
     }
 
-    get(action: string) {
-        return this.http.get('/api/' + action);
+    /**
+     * Public GET
+     * @param action
+     * @returns {Observable<Response>}
+     */
+    get(action: string)
+    {
+        return this.http
+            .get(this.endpoint + action)
+            .toPromise();
     }
 
-    getSecure(action: string): Promise<any> {
-        //headers.append('Authorization', `Bearer ${this.jwt}`);
-
-        //noinspection TypeScriptUnresolvedFunction
-        return this.http.get('/api/' + action + "?token=" + this.jwt, { headers: contentHeaders })
-            .toPromise()
-            .then((response: Response) => response.json().data)
-            .catch(this.handleError);
+    /**
+     * Public POST
+     * @param action
+     * @param data
+     * @returns {Promise<any>}
+     */
+    post(action: string, data: Object): Promise<any>
+    {
+        return this.http
+            .post(
+                this.endpoint + action,
+                JSON.stringify(data),
+                { headers: this.contentHeaders }
+            )
+            .toPromise();
     }
 
-    post(action: string, data: Object): Promise<any> {
-        //noinspection TypeScriptUnresolvedFunction
-        return this.http.post('/api/' + action, JSON.stringify(data), { headers: contentHeaders })
-            .toPromise()
-            .then()
-            .catch(this.handleError);
+    /**
+     * Token secured GET
+     * @param action
+     * @returns {Promise<any>}
+     */
+    authGet(action: string): Promise<any>
+    {
+        return this.authHttp
+            .get( this.endpoint + action )
+            .toPromise();
     }
 
-    postSecure(action: string, data: Object): Promise<any> {
-        //noinspection TypeScriptUnresolvedFunction
-        return this.http.post('/api/' + action + "?token=" + this.jwt, JSON.stringify(data), contentHeaders)
-            .toPromise()
-            .then()
-            .catch(this.handleError);
+    /**
+     * Token secured POST
+     * @param action
+     * @param data
+     * @returns {Promise<any>}
+     */
+    authPost(action: string, data: Object): Promise<any>
+    {
+        return this.authHttp
+            .post(
+                this.endpoint + action,
+                JSON.stringify(data)
+            )
+            .toPromise();
     }
 
-    putSecure(action: string, data: Object) {
-        //noinspection TypeScriptUnresolvedFunction
-        return this.http.put('/api/' + action + "?token=" + this.jwt, JSON.stringify(data), contentHeaders)
-            .toPromise()
-            .then()
-            .catch(this.handleError);
+    /**
+     * Token secured PUT
+     * @param action
+     * @param data
+     * @returns {Promise<any>}
+     */
+    authPut(action: string, data: Object = {}): Promise<any>
+    {
+        return this.authHttp
+            .put(
+                this.endpoint + action,
+                JSON.stringify(data)
+            )
+            .toPromise();
     }
 
-    deleteSecure(action: string) {
-        //noinspection TypeScriptUnresolvedFunction
-        return this.http.delete('/api/' + action + "?token=" + this.jwt, contentHeaders)
-            .toPromise()
-            .then()
-            .catch(this.handleError);
+    /**
+     * Token secured DELETE
+     * @param action
+     * @returns {Promise<any>}
+     */
+    authDelete(action: string): Promise<any>
+    {
+        return this.authHttp
+            .delete(
+                this.endpoint + action
+            )
+            .toPromise();
     }
 
-    handleError(error) {
+    handleError(error = "") {
+        console.log("error", error);
 
-        const errorType = error.json().error;
+        /*if (errorType === "token_expired") {
+         localStorage.removeItem(('auth_token'));
+         window.location.href = "/login";
+         }
 
-        if (errorType == "token_expired") {
-            localStorage.removeItem(('jwt'));
-            window.location.href = "/login";
-        }
-
-        console.error(error);
-        return Promise.reject(error.message || error);
+         console.error(error);*/
+        return Promise.reject(error);
     }
 }
