@@ -17,9 +17,6 @@ class AddUuidAndSoftDeletesUsersTable extends Migration
             $table->uuid('uuid')->after('id')->comment('Public ID of the user');
             $table->softDeletes();
 
-            // Unique
-            $table->unique('email');
-
             // Indexes
             $table->index(['name', 'uuid']);
 
