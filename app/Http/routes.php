@@ -36,9 +36,10 @@ $api->version(['v1'], [
     ], function (Router $api) {
 
         $api->get('/users', 'UserController@index');
+        $api->post('/users', 'UserController@create');
         $api->get('/users/me', 'UserController@getCurrentUser');
         $api->get('/users/{uuid}', 'UserController@show');
-        $api->post('/users/{uuid}', 'UserController@update');
+        $api->put('/users/{uuid}', 'UserController@update');
 
 
     });

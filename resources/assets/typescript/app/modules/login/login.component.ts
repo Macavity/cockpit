@@ -1,7 +1,7 @@
 
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from '../../services/auth.service';
 
 @Component(<any> {
     selector: 'page-login',
@@ -16,12 +16,12 @@ import { AuthService } from "../../services/auth.service";
 export class LoginComponent {
     public submitted: boolean = false;
 
-    public email: string = "";
-    public password: string = "";
+    public email: string = '';
+    public password: string = '';
 
     public hasLoginError = false;
     public hasGenericError = false;
-    public errorMessage = "";
+    public errorMessage = '';
 
     constructor(
         private authService: AuthService
@@ -37,16 +37,16 @@ export class LoginComponent {
         this.authService.login(email, password)
             .then(
                 response => {
-                    console.log("Login succeeded");
+                    console.log('Login succeeded');
                 }
             )
             .catch(
                 error => {
-                    console.warn("Login Error!");
+                    console.warn('Login Error!');
 
-                    const errorType = error.json().error || "default";
+                    const errorType = error.json().error || 'default';
 
-                    if (errorType == "invalid_credentials") {
+                    if (errorType == 'invalid_credentials') {
                         this.hasLoginError = true;
                     } else {
                         this.hasGenericError = true;
