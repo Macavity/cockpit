@@ -46,7 +46,7 @@ export class LoginComponent {
 
                     const errorType = error.json().error || 'default';
 
-                    if (errorType == 'invalid_credentials') {
+                    if (errorType === 'invalid_credentials') {
                         this.hasLoginError = true;
                     } else {
                         this.hasGenericError = true;

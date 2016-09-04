@@ -2,11 +2,12 @@
 import { Component, OnInit, Type, OnDestroy } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
-import { UserService } from "./services/user.service";
-import { User } from "./common/user";
-import { HeaderComponent } from "./components/header.component";
-import { BehaviorSubject } from "rxjs";
-import { AuthService } from "./services/auth.service";
+import { UserService } from './services/user.service';
+import { User } from './common/user';
+import { HeaderComponent } from './components/header.component';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService } from './services/auth.service';
+import { Response } from '@angular/http';
 
 @Component({
     selector: 'app',
@@ -48,23 +49,30 @@ export class AppComponent implements OnInit, OnDestroy {
      */
     private onLoginStatusChange = (response) => {
 
-        if(response === this.isLoggedIn) {
+        if (response === this.isLoggedIn) {
             return;
         }
 
-        console.log("onLoginStatusChange", response);
+        console.log('onLoginStatusChange', response);
         this.isLoggedIn = response;
 
         // Refresh the current user.
-        if(this.isLoggedIn) {
+        if (this.isLoggedIn) {
             this.userService.getCurrentUser().then(
-                response => {
-                    this.user.next(response);
-                    // TODO If user is logged in, redirect to dashboard.
+                (userdata) => {
+                    this.user.next(new User(userdata));
+                },
+                (error: any) => {
+                    //
                 }
             );
-        }
-        else {
+
+            console.log('current url', this.router.url);
+            if (this.router.url === '/login') {
+                this.router.navigateByUrl('/dashboard');
+            }
+
+        } else {
             this.router.navigateByUrl('/login');
         }
     };

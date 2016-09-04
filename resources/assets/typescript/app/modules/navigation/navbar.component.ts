@@ -51,7 +51,7 @@ export class NavbarComponent {
     }
 
     changeLanguage(lang: Language) {
-        console.log("clicked on changeLanguage");
+        console.log('clicked on changeLanguage');
     }
 
 }
