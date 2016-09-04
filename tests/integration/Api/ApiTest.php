@@ -49,13 +49,13 @@ class ApiTest extends TestCase
         ]);
 
         $this->json('POST', '/api/authenticate', [
-            'email' => $user->email(),
-            'password' => $fakePassword
-        ])
-            ->assertResponseStatus(self::HTTP_OK)
+                'email' => $user->email(),
+                'password' => $fakePassword
+            ])
             ->seeJsonStructure([
                 'token'
-            ]);
+            ])
+            ->assertResponseStatus(self::HTTP_OK);
     }
 
     public function it_should_allow_a_user_to_refresh_his_token()

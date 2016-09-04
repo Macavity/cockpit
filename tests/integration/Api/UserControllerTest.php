@@ -16,14 +16,14 @@ class UserControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->json('GET', 'api/users/me', [], $this->jwtHeaders($user))
-            ->assertResponseStatus(self::HTTP_OK)
             ->seeJsonStructure([
                 'data' => ['uuid', 'name']
             ])
             ->seeJson([
                 'uuid' => $user->uuid(),
                 'name' => $user->name(),
-            ]);
+            ])
+            ->assertResponseStatus(self::HTTP_OK);
     }
 
     /** @test */

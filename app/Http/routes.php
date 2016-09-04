@@ -37,8 +37,8 @@ $api->version(['v1'], [
 
         $api->get('/users', 'UserController@index');
         $api->get('/users/me', 'UserController@getCurrentUser');
-        $api->get('/users/{id}', 'UserController@show');
-        $api->post('/users/{id}', 'UserController@update');
+        $api->get('/users/{uuid}', 'UserController@show');
+        $api->post('/users/{uuid}', 'UserController@update');
 
 
     });
