@@ -11,3 +11,4 @@ resources/themes
 public/images
 resources/assets/sass/themes
 npm-debug.log
+coverage
