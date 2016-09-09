@@ -1,7 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "typings": "typings install"
+    "clean": "rimraf node_modules doc public/js && npm cache clea",
+    "clean-install": "npm run clean && npm install",
+
+    "lint": "tslint --force \"resources/**/*.ts\"",
+
+    "pretest": "npm run lint",
+    "test": "karma start",
+    "test-watch": "karma start --no-single-run --auto-watch",
+
+    "build": "rimraf public/js public/images && webpack --progress --profile --bail",
+    "server": "webpack-dashboard -- webpack-dev-server --inline --port 8080",
+    "watch": "webpack --watch --progress --profile"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -66,6 +77,7 @@
       "karma-chrome-launcher": "^1.0.1",
       "karma-coverage": "^1.0.0",
       "karma-jasmine": "^1.0.2",
+      "karma-jasmine-jquery": "^0.1.1",
       "karma-mocha-reporter": "^2.0.3",
       "karma-phantomjs-launcher": "^1.0.0",
       "karma-remap-istanbul": "0.1.1",
@@ -96,6 +108,7 @@
       "sass-loader": "^4.0.0",
       "style-loader": "^0.13.0",
       "ts-loader": "^0.8.1",
-      "tslint-loader": "^2.1.0"
+      "tslint-loader": "^2.1.0",
+      "webpack-dashboard": "^0.1.8"
   }
 }
