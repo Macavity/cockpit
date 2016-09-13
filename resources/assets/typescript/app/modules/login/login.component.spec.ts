@@ -47,8 +47,9 @@ describe('LoginComponent', function () {
             fixture.detectChanges();
 
             let compiled = fixture.debugElement.nativeElement;
-
-            expect(compiled.querySelector('.login-form__forgot').innerText).toContain("Forgot Password?");
+            const passwordLink = compiled.querySelector('.login-form__forgot');
+            expect(passwordLink.innerText).toContain("Forgot Password?");
+            expect(passwordLink).toContain("Forgot Password?");
         });
 
     });
