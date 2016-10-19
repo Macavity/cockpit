@@ -16,10 +16,8 @@ Route::get('/', [
     'uses' => 'Controller@index'
 ]);
 
-
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/{action?}', 'FrontendController@index');
 
