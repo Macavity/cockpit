@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="navbar-header">
     <a class="navbar-brand" href="{{ route('home') }}">Cockpit</a>
 
@@ -11,14 +11,14 @@
       @if (!Auth::check())
         <li>
           <a href="{{ url('/login') }}">
-            <i class="icon-user"></i>
-            <span class="visible-xs-inline-block position-right"> Login</span>
+            <i class="glyphicon glyphicon-user"></i>
+            Login
           </a>
         </li>
         <li>
           <a href="{{ url('/contact') }}">
-            <i class="icon-bubble-lines4"></i>
-            <span class="visible-xs-inline-block position-right"> Contact Admin</span>
+            <i class="glyphicon glyphicon-envelope"></i>
+            Contact Admin
           </a>
         </li>
       @else
@@ -55,7 +55,7 @@
             <ul class="media-list dropdown-content-body">
               <li class="media">
                 <div class="media-left">
-                  <img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
+                  <img src="/assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
                   <span class="badge bg-danger-400 media-badge">5</span>
                 </div>
 
@@ -71,7 +71,7 @@
 
               <li class="media">
                 <div class="media-left">
-                  <img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
+                  <img src="/assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
                   <span class="badge bg-danger-400 media-badge">4</span>
                 </div>
 

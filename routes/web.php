@@ -16,8 +16,10 @@ Route::get('/', [
     'uses' => 'Controller@index'
 ]);
 
-Route::get('/{action?}', 'AngularRouteController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/{action?}', 'AngularRouteController@index');
+
