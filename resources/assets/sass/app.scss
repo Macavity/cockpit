@@ -1,9 +1,9 @@
 
-// Bootstrap Core
-@import "core";
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-// Specific components
-@import "components";
+// Variables
+@import "variables";
 
-@import "colors";
-
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
