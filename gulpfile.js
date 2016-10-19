@@ -1,6 +1,4 @@
-//process.env.DISABLE_NOTIFIER = true;
-
-var Elixir = require('laravel-elixir');
+const Elixir = require('laravel-elixir');
 
 const gulp = require('gulp');
 
@@ -9,6 +7,7 @@ var webpack = require('webpack');
 
 // Load ".env" file
 require('dotenv').config();
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------

@@ -1,16 +1,8 @@
 <?php
 use App\User;
-use Symfony\Component\HttpFoundation\Response as BaseResponse;
 
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
-    const HTTP_OK =             BaseResponse::HTTP_OK;          // 200
-    const HTTP_CREATED =        BaseResponse::HTTP_CREATED;     // 201
-    const HTTP_ACCEPTED =       BaseResponse::HTTP_ACCEPTED;    // 202
-
-    const HTTP_BAD_REQUEST =    BaseResponse::HTTP_BAD_REQUEST; // 400
-    const HTTP_UNAUTHORIZED =   BaseResponse::HTTP_UNAUTHORIZED; // 401
-
     /**
      * The base URL to use while testing the application.
      *

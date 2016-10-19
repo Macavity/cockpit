@@ -8,41 +8,38 @@
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{{ $title or "Cockpit"}}</title>
 
+  <title>{{ config('app.name', 'Laravel') }}</title>
+
+  <!-- Styles -->
+  <link href="/css/app.css" rel="stylesheet">
+
+  <!-- Scripts -->
   <script>
     window.APP_ENVIRONMENT = {
       APP_ENV: '{{ env('APP_ENV') }}',
       API_STANDARDS_TREE: '{{ env('API_STANDARDS_TREE') }}',
       API_SUBTYPE: '{{ env('API_SUBTYPE') }}',
-      API_VERSION: '{{ env('API_VERSION') }}',
+      API_VERSION: '{{ env('API_VERSION') }}'
     };
-    window.Laravel = {csrfToken: '{{ csrf_token() }}'};
+    window.Laravel = { csrfToken: '{{ csrf_token() }}' };
   </script>
-  <title>{{ $title or "Cockpit"}}</title>
-
-  <!-- Fonts -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
-        type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-
-  <!-- Styles -->
-  <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="{{asset('css/icomoon.css')}}" rel="stylesheet" type="text/css">
-  <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
-
-  <style>
-    body {
-      font-family: 'Lato';
-    }
-  </style>
 </head>
 <body>
+<div id="app">
 
   @section('content')
     @include('partials.navbar')
     @include('partials.frontend_app')
   @show
+</div>
 
-  @include('partials.scripts')
+@include('partials.scripts');
+
+<!-- Fonts -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+
 </body>
 </html>
