@@ -17,9 +17,9 @@ Route::get('/', [
 ]);
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/{action?}', 'AngularRouteController@index');
+Route::get('/{action?}', 'FrontendController@index');
 
