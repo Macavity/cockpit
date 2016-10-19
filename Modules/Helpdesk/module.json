@@ -1,0 +1,15 @@
+{
+    "name": "Helpdesk",
+    "alias": "helpdesk",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Helpdesk\\Providers\\HelpdeskServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}
