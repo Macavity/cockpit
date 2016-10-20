@@ -24,7 +24,12 @@ class DatabaseSeeder extends Seeder
         }
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $this->call(UserTableSeeder::class);
+        $this->call(\Modules\Core\Database\Seeders\CoreRoleSeeder::class);
+
+        if (!App::environment('production')) {
+            $this->call(\Modules\Core\Database\Seeders\CoreTestUserSeeder::class);
+        }
+
 
         Model::reguard();
     }

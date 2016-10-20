@@ -29,8 +29,9 @@
 <body>
 <div id="app">
 
+  @include('partials.navbar')
+
   @section('content')
-    @include('partials.navbar')
     @include('partials.frontend_app')
   @show
 </div>

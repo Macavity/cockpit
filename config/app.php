@@ -167,7 +167,17 @@ return [
          * Package Service Providers...
          */
 
-        //
+        // Sentinel (Permission System)
+        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+
+        // Modules
+        Nwidart\Modules\LaravelModulesServiceProvider::class,
+
+        // Stylist (Themes)
+        FloatingPoint\Stylist\StylistServiceProvider::class,
+
+        // Gravatar
+        Creativeorange\Gravatar\GravatarServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,8 +237,18 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Dependancy specific
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+
+        'Module' => Nwidart\Modules\Facades\Module::class,
+
+
+        'Gravatar' => \Creativeorange\Gravatar\Facades\Gravatar::class,
+
+        'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+        'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+        'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
     ],
 
 ];

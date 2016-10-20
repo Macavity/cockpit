@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab3c37da764c557194abe2947be50212",
-    "content-hash": "b44f09a97c869cd4b3ee949fc5573e73",
+    "hash": "745328a1efe0bca08ab2992db40b18dd",
+    "content-hash": "46f5afc7ab9d0368554d272cb0d234ff",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -369,135 +369,48 @@
             "time": "2015-11-09 22:51:51"
         },
         {
-            "name": "dingo/api",
-            "version": "dev-master",
+            "name": "creativeorange/gravatar",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dingo/api.git",
-                "reference": "dc312a566ff8fe16098f95360d3778789727f63f"
+                "url": "https://github.com/creativeorange/gravatar.git",
+                "reference": "06cfcd2754fe0678298da1d244ab17231368d291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dingo/api/zipball/dc312a566ff8fe16098f95360d3778789727f63f",
-                "reference": "dc312a566ff8fe16098f95360d3778789727f63f",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/06cfcd2754fe0678298da1d244ab17231368d291",
+                "reference": "06cfcd2754fe0678298da1d244ab17231368d291",
                 "shasum": ""
             },
             "require": {
-                "dingo/blueprint": "0.2.*",
-                "doctrine/annotations": "1.2.*",
-                "illuminate/routing": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
-                "league/fractal": ">=0.12.0",
-                "php": "^5.5.9 || ^7.0"
-            },
-            "require-dev": {
-                "illuminate/auth": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/cache": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/console": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/database": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/events": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/filesystem": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/log": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/pagination": "5.1.* || 5.2.* || 5.3.*",
-                "laravel/lumen-framework": "5.1.* || 5.2.*",
-                "lucadegasperi/oauth2-server-laravel": "5.0.*",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "^4.8 || ^5.0",
-                "squizlabs/php_codesniffer": "~2.0",
-                "tymon/jwt-auth": "1.0.*"
-            },
-            "suggest": {
-                "lucadegasperi/oauth2-server-laravel": "Protect your API with OAuth 2.0.",
-                "tymon/jwt-auth": "Protect your API with JSON Web Tokens."
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Dingo\\Api\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Jason Lewis",
-                    "email": "jason.lewis1991@gmail.com"
-                }
-            ],
-            "description": "A RESTful API package for the Laravel and Lumen frameworks.",
-            "keywords": [
-                "api",
-                "dingo",
-                "laravel",
-                "restful"
-            ],
-            "time": "2016-10-18 16:20:39"
-        },
-        {
-            "name": "dingo/blueprint",
-            "version": "v0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dingo/blueprint.git",
-                "reference": "d37fb7433aeadb3d40d5e790978c3c8d229d0e7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dingo/blueprint/zipball/d37fb7433aeadb3d40d5e790978c3c8d229d0e7d",
-                "reference": "d37fb7433aeadb3d40d5e790978c3c8d229d0e7d",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/annotations": "1.2.*",
-                "illuminate/filesystem": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
-                "php": ">=5.5.9",
-                "phpdocumentor/reflection-docblock": "3.1.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dingo\\Blueprint\\": "src"
+                    "Creativeorange\\Gravatar\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Jason Lewis",
-                    "email": "jason.lewis1991@gmail.com"
+                    "name": "Jaco Tijssen",
+                    "email": "jaco@creativeorange.nl",
+                    "homepage": "https://www.creativeorange.nl",
+                    "role": "Developer"
                 }
             ],
-            "description": "API Blueprint documentation generator.",
+            "description": "A Laravel 5.0, 5.1, 5.2 and 5.3 gravatar package for retrieving gravatar image URLs or checking the existance of an image.",
             "keywords": [
-                "api",
-                "blueprint",
-                "dingo",
-                "docs",
+                "avatar",
+                "gravatar",
                 "laravel"
             ],
-            "time": "2016-08-30 03:27:49"
+            "time": "2016-07-27 16:49:05"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1002,6 +915,51 @@
             "time": "2014-09-09 13:34:57"
         },
         {
+            "name": "floatingpoint/stylist",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/floatingpointsoftware/stylist.git",
+                "reference": "c2458167317775bf11021b3820f31c07564f6d5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/floatingpointsoftware/stylist/zipball/c2458167317775bf11021b3820f31c07564f6d5c",
+                "reference": "c2458167317775bf11021b3820f31c07564f6d5c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "laravelcollective/html": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master@dev",
+                "orchestra/testbench": "3.0.*",
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FloatingPoint\\Stylist\\": "src/Stylist",
+                    "Tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Kirk Bushell",
+                    "email": "torm3nt@gmail.com"
+                },
+                {
+                    "name": "Mike Dugan",
+                    "email": "mike@mjdugan.com"
+                }
+            ],
+            "description": "Laravel 5 theming package.",
+            "time": "2016-04-19 16:31:08"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -1273,6 +1231,60 @@
                 "laravel"
             ],
             "time": "2016-10-17 19:35:14"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "961ce141c16c6b085128f209496c26efd3e681ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/961ce141c16c6b085128f209496c26efd3e681ca",
+                "reference": "961ce141c16c6b085128f209496c26efd3e681ca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.3.*",
+                "illuminate/routing": "5.3.*",
+                "illuminate/session": "5.3.*",
+                "illuminate/support": "5.3.*",
+                "illuminate/view": "5.3.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "illuminate/database": "5.3.*",
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-08-27 23:52:43"
         },
         {
             "name": "league/flysystem",
@@ -1691,6 +1703,60 @@
             "time": "2016-09-16 12:04:44"
         },
         {
+            "name": "nwidart/laravel-modules",
+            "version": "1.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nWidart/laravel-modules.git",
+                "reference": "2d05b9c5ac23cb800725ba760d9a323820603d9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nWidart/laravel-modules/zipball/2d05b9c5ac23cb800725ba760d9a323820603d9f",
+                "reference": "2d05b9c5ac23cb800725ba760d9a323820603d9f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.1.*|5.2.*|5.3.*",
+                "laravelcollective/html": "5.1.*|5.2.*|5.3.*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "mockery/mockery": "~0.9",
+                "orchestra/testbench": "^3.1|^3.2|^3.3",
+                "phpro/grumphp": "^0.9.1",
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nwidart\\Modules\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "n.widart@gmail.com",
+                    "homepage": "https://nicolaswidart.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Module management",
+            "keywords": [
+                "laravel",
+                "module",
+                "modules",
+                "nwidart",
+                "rad"
+            ],
+            "time": "2016-10-19 09:27:32"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.3",
             "source": {
@@ -1737,152 +1803,6 @@
                 "random"
             ],
             "time": "2016-10-17 15:23:22"
-        },
-        {
-            "name": "phpdocumentor/reflection-common",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
-                "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jaap van Otterdijk",
-                    "email": "opensource@ijaap.nl"
-                }
-            ],
-            "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
-            "homepage": "http://www.phpdoc.org",
-            "keywords": [
-                "FQSEN",
-                "phpDocumentor",
-                "phpdoc",
-                "reflection",
-                "static analysis"
-            ],
-            "time": "2015-12-27 11:43:31"
-        },
-        {
-            "name": "phpdocumentor/reflection-docblock",
-            "version": "3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/8331b5efe816ae05461b7ca1e721c01b46bafb3e",
-                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "phpdocumentor/reflection-common": "^1.0@dev",
-                "phpdocumentor/type-resolver": "^0.2.0",
-                "webmozart/assert": "^1.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mike van Riel",
-                    "email": "me@mikevanriel.com"
-                }
-            ],
-            "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2016-09-30 07:12:33"
-        },
-        {
-            "name": "phpdocumentor/type-resolver",
-            "version": "0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/b39c7a5b194f9ed7bd0dd345c751007a41862443",
-                "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "phpdocumentor/reflection-common": "^1.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^5.2||^4.8.24"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mike van Riel",
-                    "email": "me@mikevanriel.com"
-                }
-            ],
-            "time": "2016-06-10 07:14:17"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -3182,59 +3102,65 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
-        },
+        }
+    ],
+    "packages-dev": [
         {
-            "name": "webmozart/assert",
-            "version": "1.1.0",
+            "name": "dingo/blueprint",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
-                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308"
+                "url": "https://github.com/dingo/blueprint.git",
+                "reference": "d37fb7433aeadb3d40d5e790978c3c8d229d0e7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bb2d123231c095735130cc8f6d31385a44c7b308",
-                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308",
+                "url": "https://api.github.com/repos/dingo/blueprint/zipball/d37fb7433aeadb3d40d5e790978c3c8d229d0e7d",
+                "reference": "d37fb7433aeadb3d40d5e790978c3c8d229d0e7d",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3|^7.0"
+                "doctrine/annotations": "1.2.*",
+                "illuminate/filesystem": "5.1.* || 5.2.* || 5.3.*",
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
+                "php": ">=5.5.9",
+                "phpdocumentor/reflection-docblock": "3.1.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.6",
-                "sebastian/version": "^1.0.1"
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "0.2-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Webmozart\\Assert\\": "src/"
+                    "Dingo\\Blueprint\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
+                    "name": "Jason Lewis",
+                    "email": "jason.lewis1991@gmail.com"
                 }
             ],
-            "description": "Assertions to validate method input/output with nice error messages.",
+            "description": "API Blueprint documentation generator.",
             "keywords": [
-                "assert",
-                "check",
-                "validate"
+                "api",
+                "blueprint",
+                "dingo",
+                "docs",
+                "laravel"
             ],
-            "time": "2016-08-09 15:02:57"
-        }
-    ],
-    "packages-dev": [
+            "time": "2016-08-30 03:27:49"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
@@ -3488,6 +3414,152 @@
                 "object graph"
             ],
             "time": "2016-09-16 13:37:59"
+        },
+        {
+            "name": "phpdocumentor/reflection-common",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
+                "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
+                "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaap van Otterdijk",
+                    "email": "opensource@ijaap.nl"
+                }
+            ],
+            "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "FQSEN",
+                "phpDocumentor",
+                "phpdoc",
+                "reflection",
+                "static analysis"
+            ],
+            "time": "2015-12-27 11:43:31"
+        },
+        {
+            "name": "phpdocumentor/reflection-docblock",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/8331b5efe816ae05461b7ca1e721c01b46bafb3e",
+                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "phpdocumentor/reflection-common": "^1.0@dev",
+                "phpdocumentor/type-resolver": "^0.2.0",
+                "webmozart/assert": "^1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "me@mikevanriel.com"
+                }
+            ],
+            "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
+            "time": "2016-09-30 07:12:33"
+        },
+        {
+            "name": "phpdocumentor/type-resolver",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/b39c7a5b194f9ed7bd0dd345c751007a41862443",
+                "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "phpdocumentor/reflection-common": "^1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.2||^4.8.24"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "me@mikevanriel.com"
+                }
+            ],
+            "time": "2016-06-10 07:14:17"
         },
         {
             "name": "phpspec/prophecy",
@@ -4606,13 +4678,61 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-09-25 08:27:07"
+        },
+        {
+            "name": "webmozart/assert",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/assert.git",
+                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bb2d123231c095735130cc8f6d31385a44c7b308",
+                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Assert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "time": "2016-08-09 15:02:57"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dingo/api": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

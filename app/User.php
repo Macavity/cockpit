@@ -2,12 +2,17 @@
 
 namespace App;
 
+use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Modules\Core\Entities\HasUuid;
+use Modules\Core\Entities\Organization;
 
-class User extends Authenticatable
+class User extends EloquentUser
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes, Authenticatable, CanResetPassword, HasUuid;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'permissions', 'organization_id'
     ];
 
     /**
@@ -24,6 +29,20 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'id', 'password', 'remember_token',
     ];
+
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function hasOrganization()
+    {
+        return !empty($this->organization_id);
+    }
+
+    public function organization() {
+        return $this->belongsTo(Organization::class);
+    }
 }
