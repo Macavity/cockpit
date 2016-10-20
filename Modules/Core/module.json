@@ -10,6 +10,7 @@
   ],
   "aliases": {},
   "files": [
+    "constants.php",
     "start.php",
     "Database/CoreFactory.php"
   ]

@@ -2,10 +2,12 @@
 
 namespace Modules\Core\Repositories;
 
+use Cartalyst\Sentinel\Roles\EloquentRole;
 use Sentinel;
 
 class RoleRepository
 {
+
     public function all() {
 
         $currentUser = Sentinel::getUser();
@@ -28,5 +30,40 @@ class RoleRepository
 
     public function addUserToRole(){
 
+    }
+
+    /**
+     * Add Permissions to roles
+     *
+     * @param array $permissions
+     * @param array $permissionsByRole
+     * @param string $groupSlug
+     */
+    public function addPermissionsToRole($permissions, $permissionsByRole, $groupSlug = '')
+    {
+        foreach($permissionsByRole as $roleSlug => $rolePermissions) {
+
+            /**
+             * @var EloquentRole
+             */
+            $role = Sentinel::findBySlug($roleSlug);
+
+            if($rolePermissions === '*') {
+                $rolePermissions = $permissions;
+            }
+
+            foreach($rolePermissions as $permissionSlug) {
+                $permissionSlug = (empty($groupSlug)) ? $permissionSlug : $groupSlug . '.' . $permissionSlug;
+                $role->addPermission($permissionSlug);
+            }
+
+            $role->save();
+
+        }
+    }
+
+    public function findBySlug($slug)
+    {
+        return Sentinel::getRoleRepository()->findBySlug($slug);
     }
 }
