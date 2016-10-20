@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8acaa09b049860e6affae31db5dd817c",
-    "content-hash": "b1a49c4e6c651b96c50eb87634e44b23",
+    "hash": "745328a1efe0bca08ab2992db40b18dd",
+    "content-hash": "46f5afc7ab9d0368554d272cb0d234ff",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -367,6 +367,50 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "creativeorange/gravatar",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/creativeorange/gravatar.git",
+                "reference": "06cfcd2754fe0678298da1d244ab17231368d291"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/06cfcd2754fe0678298da1d244ab17231368d291",
+                "reference": "06cfcd2754fe0678298da1d244ab17231368d291",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Creativeorange\\Gravatar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaco Tijssen",
+                    "email": "jaco@creativeorange.nl",
+                    "homepage": "https://www.creativeorange.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel 5.0, 5.1, 5.2 and 5.3 gravatar package for retrieving gravatar image URLs or checking the existance of an image.",
+            "keywords": [
+                "avatar",
+                "gravatar",
+                "laravel"
+            ],
+            "time": "2016-07-27 16:49:05"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -869,6 +913,51 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+        },
+        {
+            "name": "floatingpoint/stylist",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/floatingpointsoftware/stylist.git",
+                "reference": "c2458167317775bf11021b3820f31c07564f6d5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/floatingpointsoftware/stylist/zipball/c2458167317775bf11021b3820f31c07564f6d5c",
+                "reference": "c2458167317775bf11021b3820f31c07564f6d5c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "laravelcollective/html": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master@dev",
+                "orchestra/testbench": "3.0.*",
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FloatingPoint\\Stylist\\": "src/Stylist",
+                    "Tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Kirk Bushell",
+                    "email": "torm3nt@gmail.com"
+                },
+                {
+                    "name": "Mike Dugan",
+                    "email": "mike@mjdugan.com"
+                }
+            ],
+            "description": "Laravel 5 theming package.",
+            "time": "2016-04-19 16:31:08"
         },
         {
             "name": "jakub-onderka/php-console-color",

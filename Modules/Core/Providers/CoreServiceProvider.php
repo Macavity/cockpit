@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider
@@ -23,6 +24,9 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+
+        $this->registerThemes();
+        $this->registerThemeViews();
     }
 
     /**
@@ -32,7 +36,30 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
+    }
+
+    public function registerThemes()
+    {
+        app('stylist')->registerPath(base_path('/Themes/Base'), true);
+    }
+
+    public function registerThemeViews()
+    {
+        $currentTheme = config('stylist.themes.activate');
+        $slug = strtolower($currentTheme);
+
+        $viewPath = base_path('Themes/'.$currentTheme);
+
+        $sourcePath = __DIR__.'/../../../Themes/'.$currentTheme.'/views';
+
+        $this->publishes([
+            $sourcePath => $viewPath
+        ]);
+
+        $this->loadViewsFrom($viewPath, $slug);
     }
 
     /**

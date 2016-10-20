@@ -18,7 +18,9 @@
     "cartalyst/sentinel": "^2.0",
     "php": ">=5.6.4",
     "laravel/framework": "5.3.*",
-    "nwidart/laravel-modules": "^1.14"
+    "nwidart/laravel-modules": "^1.14",
+    "floatingpoint/stylist": "^0.4.0",
+    "creativeorange/gravatar": "^1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -57,6 +59,8 @@
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:meta",
       "php artisan optimize"
     ]
   },

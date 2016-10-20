@@ -167,8 +167,17 @@ return [
          * Package Service Providers...
          */
 
+        // Sentinel (Permission System)
+        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+
         // Modules
         Nwidart\Modules\LaravelModulesServiceProvider::class,
+
+        // Stylist (Themes)
+        FloatingPoint\Stylist\StylistServiceProvider::class,
+
+        // Gravatar
+        Creativeorange\Gravatar\GravatarServiceProvider::class,
 
         /*
          * Application Service Providers...
