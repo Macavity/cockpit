@@ -65,6 +65,7 @@ class CoreTestUserSeeder extends Seeder
 
         // A Test Manager
         $manager = factory(User::class)->create([
+            'organization_id' => $company->id,
             'email' => 'manager@example.com',
             'password' => app('hash')->make('manager'),
         ]);
@@ -76,7 +77,7 @@ class CoreTestUserSeeder extends Seeder
 
         // 1 Test User for this company, with a known password
         factory(User::class, 1)->create([
-            'company_id' => $company->id,
+            'organization_id' => $company->id,
             'email' => 'user@example.com',
             'password' => app('hash')->make('user'),
         ])->each(function(User $user) {
@@ -88,7 +89,7 @@ class CoreTestUserSeeder extends Seeder
 
         // 48 other test users for this company
         factory(User::class, 48)->create([
-            'company_id' => $company->id,
+            'organization_id' => $company->id,
         ])->each(function(User $user) {
             $employeeRole = Sentinel::getRoleRepository()->findBySlug('employee');
             $employeeRole->users()->attach($user);

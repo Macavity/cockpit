@@ -19,7 +19,7 @@ class SidebarNavigationRepository
                         'route' => 'dashboard',
                         'icon' => 'home',
                     ],
-                    [
+                    /*[
                         'label' => 'Companies',
                         'route' => 'companies',
                         'icon' => 'briefcase',
@@ -28,18 +28,8 @@ class SidebarNavigationRepository
                         'label' => 'Users',
                         'route' => 'users',
                         'icon' => 'users',
-                    ],
+                    ],*/
                 ]
-            ],
-            'Courses' => [
-                'label' => 'Courses',
-                'children' => [
-                    [
-                        'label' => 'Courses',
-                        'route' => 'courses',
-                        'icon' => 'presentation',
-                    ]
-                ],
             ],
         ];
 

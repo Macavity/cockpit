@@ -1,6 +1,10 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'core', 'namespace' => 'Modules\Core\Http\Controllers'], function()
-{
-    Route::get('/', 'CoreController@index');
+Route::group([
+    'middleware' => 'web',
+    'namespace' => 'Modules\Core\Http\Controllers'
+], function() {
+
+
+
 });
