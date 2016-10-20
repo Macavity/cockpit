@@ -11840,6 +11840,284 @@ namespace {
     }
 
 
+    class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth{
+        
+        /**
+         * Find a user using the user identifier in the subject claim.
+         *
+         * @param bool|string $token
+         * @return mixed 
+         * @static 
+         */
+        public static function toUser($token = false){
+            return \Tymon\JWTAuth\JWTAuth::toUser($token);
+        }
+        
+        /**
+         * Generate a token using the user identifier as the subject claim.
+         *
+         * @param mixed $user
+         * @param array $customClaims
+         * @return string 
+         * @static 
+         */
+        public static function fromUser($user, $customClaims = array()){
+            return \Tymon\JWTAuth\JWTAuth::fromUser($user, $customClaims);
+        }
+        
+        /**
+         * Attempt to authenticate the user and return the token.
+         *
+         * @param array $credentials
+         * @param array $customClaims
+         * @return false|string 
+         * @static 
+         */
+        public static function attempt($credentials = array(), $customClaims = array()){
+            return \Tymon\JWTAuth\JWTAuth::attempt($credentials, $customClaims);
+        }
+        
+        /**
+         * Authenticate a user via a token.
+         *
+         * @param mixed $token
+         * @return mixed 
+         * @static 
+         */
+        public static function authenticate($token = false){
+            return \Tymon\JWTAuth\JWTAuth::authenticate($token);
+        }
+        
+        /**
+         * Refresh an expired token.
+         *
+         * @param mixed $token
+         * @return string 
+         * @static 
+         */
+        public static function refresh($token = false){
+            return \Tymon\JWTAuth\JWTAuth::refresh($token);
+        }
+        
+        /**
+         * Invalidate a token (add it to the blacklist).
+         *
+         * @param mixed $token
+         * @return bool 
+         * @static 
+         */
+        public static function invalidate($token = false){
+            return \Tymon\JWTAuth\JWTAuth::invalidate($token);
+        }
+        
+        /**
+         * Get the token.
+         *
+         * @return bool|string 
+         * @static 
+         */
+        public static function getToken(){
+            return \Tymon\JWTAuth\JWTAuth::getToken();
+        }
+        
+        /**
+         * Get the raw Payload instance.
+         *
+         * @param mixed $token
+         * @return \Tymon\JWTAuth\Payload 
+         * @static 
+         */
+        public static function getPayload($token = false){
+            return \Tymon\JWTAuth\JWTAuth::getPayload($token);
+        }
+        
+        /**
+         * Parse the token from the request.
+         *
+         * @param string $query
+         * @return \JWTAuth 
+         * @static 
+         */
+        public static function parseToken($method = 'bearer', $header = 'authorization', $query = 'token'){
+            return \Tymon\JWTAuth\JWTAuth::parseToken($method, $header, $query);
+        }
+        
+        /**
+         * Set the identifier.
+         *
+         * @param string $identifier
+         * @return $this 
+         * @static 
+         */
+        public static function setIdentifier($identifier){
+            return \Tymon\JWTAuth\JWTAuth::setIdentifier($identifier);
+        }
+        
+        /**
+         * Get the identifier.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getIdentifier(){
+            return \Tymon\JWTAuth\JWTAuth::getIdentifier();
+        }
+        
+        /**
+         * Set the token.
+         *
+         * @param string $token
+         * @return $this 
+         * @static 
+         */
+        public static function setToken($token){
+            return \Tymon\JWTAuth\JWTAuth::setToken($token);
+        }
+        
+        /**
+         * Set the request instance.
+         *
+         * @param \Request $request
+         * @static 
+         */
+        public static function setRequest($request){
+            return \Tymon\JWTAuth\JWTAuth::setRequest($request);
+        }
+        
+        /**
+         * Get the JWTManager instance.
+         *
+         * @return \Tymon\JWTAuth\JWTManager 
+         * @static 
+         */
+        public static function manager(){
+            return \Tymon\JWTAuth\JWTAuth::manager();
+        }
+        
+    }
+
+
+    class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory{
+        
+        /**
+         * Create the Payload instance.
+         *
+         * @param array $customClaims
+         * @return \Tymon\JWTAuth\Payload 
+         * @static 
+         */
+        public static function make($customClaims = array()){
+            return \Tymon\JWTAuth\PayloadFactory::make($customClaims);
+        }
+        
+        /**
+         * Add an array of claims to the Payload.
+         *
+         * @param array $claims
+         * @return $this 
+         * @static 
+         */
+        public static function addClaims($claims){
+            return \Tymon\JWTAuth\PayloadFactory::addClaims($claims);
+        }
+        
+        /**
+         * Add a claim to the Payload.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @return $this 
+         * @static 
+         */
+        public static function addClaim($name, $value){
+            return \Tymon\JWTAuth\PayloadFactory::addClaim($name, $value);
+        }
+        
+        /**
+         * Build out the Claim DTO's.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function resolveClaims(){
+            return \Tymon\JWTAuth\PayloadFactory::resolveClaims();
+        }
+        
+        /**
+         * Set the Issuer (iss) claim.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function iss(){
+            return \Tymon\JWTAuth\PayloadFactory::iss();
+        }
+        
+        /**
+         * Set the Issued At (iat) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function iat(){
+            return \Tymon\JWTAuth\PayloadFactory::iat();
+        }
+        
+        /**
+         * Set the Expiration (exp) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function exp(){
+            return \Tymon\JWTAuth\PayloadFactory::exp();
+        }
+        
+        /**
+         * Set the Not Before (nbf) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function nbf(){
+            return \Tymon\JWTAuth\PayloadFactory::nbf();
+        }
+        
+        /**
+         * Set the token ttl (in minutes).
+         *
+         * @param int $ttl
+         * @return $this 
+         * @static 
+         */
+        public static function setTTL($ttl){
+            return \Tymon\JWTAuth\PayloadFactory::setTTL($ttl);
+        }
+        
+        /**
+         * Get the token ttl.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function getTTL(){
+            return \Tymon\JWTAuth\PayloadFactory::getTTL();
+        }
+        
+        /**
+         * Set the refresh flow.
+         *
+         * @param bool $refreshFlow
+         * @return $this 
+         * @static 
+         */
+        public static function setRefreshFlow($refreshFlow = true){
+            return \Tymon\JWTAuth\PayloadFactory::setRefreshFlow($refreshFlow);
+        }
+        
+    }
+
+
     class Module extends \Nwidart\Modules\Facades\Module{
         
         /**
@@ -12268,279 +12546,702 @@ namespace {
     }
 
 
-    class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth{
+    class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar{
         
         /**
-         * Find a user using the user identifier in the subject claim.
+         * Override the default image fallback set in the config.
+         * 
+         * Can either be a public URL to an image or a valid themed image.
+         * For more info, visit http://en.gravatar.com/site/implement/images/#default-image
          *
-         * @param bool|string $token
-         * @return mixed 
+         * @param string $fallback
+         * @return $this 
          * @static 
          */
-        public static function toUser($token = false){
-            return \Tymon\JWTAuth\JWTAuth::toUser($token);
+        public static function fallback($fallback){
+            return \Creativeorange\Gravatar\Gravatar::fallback($fallback);
         }
         
         /**
-         * Generate a token using the user identifier as the subject claim.
+         * Check if Gravatar has an avatar for the given email address
          *
-         * @param mixed $user
-         * @param array $customClaims
-         * @return string 
-         * @static 
-         */
-        public static function fromUser($user, $customClaims = array()){
-            return \Tymon\JWTAuth\JWTAuth::fromUser($user, $customClaims);
-        }
-        
-        /**
-         * Attempt to authenticate the user and return the token.
-         *
-         * @param array $credentials
-         * @param array $customClaims
-         * @return false|string 
-         * @static 
-         */
-        public static function attempt($credentials = array(), $customClaims = array()){
-            return \Tymon\JWTAuth\JWTAuth::attempt($credentials, $customClaims);
-        }
-        
-        /**
-         * Authenticate a user via a token.
-         *
-         * @param mixed $token
-         * @return mixed 
-         * @static 
-         */
-        public static function authenticate($token = false){
-            return \Tymon\JWTAuth\JWTAuth::authenticate($token);
-        }
-        
-        /**
-         * Refresh an expired token.
-         *
-         * @param mixed $token
-         * @return string 
-         * @static 
-         */
-        public static function refresh($token = false){
-            return \Tymon\JWTAuth\JWTAuth::refresh($token);
-        }
-        
-        /**
-         * Invalidate a token (add it to the blacklist).
-         *
-         * @param mixed $token
+         * @param $email
          * @return bool 
+         * @throws InvalidEmailException
          * @static 
          */
-        public static function invalidate($token = false){
-            return \Tymon\JWTAuth\JWTAuth::invalidate($token);
+        public static function exists($email){
+            return \Creativeorange\Gravatar\Gravatar::exists($email);
         }
         
         /**
-         * Get the token.
+         * Get the gravatar url
          *
-         * @return bool|string 
-         * @static 
-         */
-        public static function getToken(){
-            return \Tymon\JWTAuth\JWTAuth::getToken();
-        }
-        
-        /**
-         * Get the raw Payload instance.
-         *
-         * @param mixed $token
-         * @return \Tymon\JWTAuth\Payload 
-         * @static 
-         */
-        public static function getPayload($token = false){
-            return \Tymon\JWTAuth\JWTAuth::getPayload($token);
-        }
-        
-        /**
-         * Parse the token from the request.
-         *
-         * @param string $query
-         * @return \JWTAuth 
-         * @static 
-         */
-        public static function parseToken($method = 'bearer', $header = 'authorization', $query = 'token'){
-            return \Tymon\JWTAuth\JWTAuth::parseToken($method, $header, $query);
-        }
-        
-        /**
-         * Set the identifier.
-         *
-         * @param string $identifier
-         * @return $this 
-         * @static 
-         */
-        public static function setIdentifier($identifier){
-            return \Tymon\JWTAuth\JWTAuth::setIdentifier($identifier);
-        }
-        
-        /**
-         * Get the identifier.
-         *
+         * @param $email
+         * @param string $configGroup
          * @return string 
+         * @throws InvalidEmailException
          * @static 
          */
-        public static function getIdentifier(){
-            return \Tymon\JWTAuth\JWTAuth::getIdentifier();
-        }
-        
-        /**
-         * Set the token.
-         *
-         * @param string $token
-         * @return $this 
-         * @static 
-         */
-        public static function setToken($token){
-            return \Tymon\JWTAuth\JWTAuth::setToken($token);
-        }
-        
-        /**
-         * Set the request instance.
-         *
-         * @param \Request $request
-         * @static 
-         */
-        public static function setRequest($request){
-            return \Tymon\JWTAuth\JWTAuth::setRequest($request);
-        }
-        
-        /**
-         * Get the JWTManager instance.
-         *
-         * @return \Tymon\JWTAuth\JWTManager 
-         * @static 
-         */
-        public static function manager(){
-            return \Tymon\JWTAuth\JWTAuth::manager();
+        public static function get($email, $configGroup = 'default'){
+            return \Creativeorange\Gravatar\Gravatar::get($email, $configGroup);
         }
         
     }
 
 
-    class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory{
+    class Activation extends \Cartalyst\Sentinel\Laravel\Facades\Activation{
         
         /**
-         * Create the Payload instance.
+         * {@inheritDoc}
          *
-         * @param array $customClaims
-         * @return \Tymon\JWTAuth\Payload 
          * @static 
          */
-        public static function make($customClaims = array()){
-            return \Tymon\JWTAuth\PayloadFactory::make($customClaims);
+        public static function create($user){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::create($user);
         }
         
         /**
-         * Add an array of claims to the Payload.
+         * {@inheritDoc}
          *
-         * @param array $claims
-         * @return $this 
          * @static 
          */
-        public static function addClaims($claims){
-            return \Tymon\JWTAuth\PayloadFactory::addClaims($claims);
+        public static function exists($user, $code = null){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::exists($user, $code);
         }
         
         /**
-         * Add a claim to the Payload.
+         * {@inheritDoc}
          *
-         * @param string $name
-         * @param mixed $value
-         * @return $this 
          * @static 
          */
-        public static function addClaim($name, $value){
-            return \Tymon\JWTAuth\PayloadFactory::addClaim($name, $value);
+        public static function complete($user, $code){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::complete($user, $code);
         }
         
         /**
-         * Build out the Claim DTO's.
+         * {@inheritDoc}
          *
-         * @return array 
          * @static 
          */
-        public static function resolveClaims(){
-            return \Tymon\JWTAuth\PayloadFactory::resolveClaims();
+        public static function completed($user){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::completed($user);
         }
         
         /**
-         * Set the Issuer (iss) claim.
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function remove($user){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::remove($user);
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function removeExpired(){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::removeExpired();
+        }
+        
+        /**
+         * Create a new instance of the model.
+         *
+         * @param array $data
+         * @return mixed 
+         * @static 
+         */
+        public static function createModel($data = array()){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::createModel($data);
+        }
+        
+        /**
+         * Returns the model.
          *
          * @return string 
          * @static 
          */
-        public static function iss(){
-            return \Tymon\JWTAuth\PayloadFactory::iss();
+        public static function getModel(){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::getModel();
         }
         
         /**
-         * Set the Issued At (iat) claim.
+         * Runtime override of the model.
          *
-         * @return int 
-         * @static 
-         */
-        public static function iat(){
-            return \Tymon\JWTAuth\PayloadFactory::iat();
-        }
-        
-        /**
-         * Set the Expiration (exp) claim.
-         *
-         * @return int 
-         * @static 
-         */
-        public static function exp(){
-            return \Tymon\JWTAuth\PayloadFactory::exp();
-        }
-        
-        /**
-         * Set the Not Before (nbf) claim.
-         *
-         * @return int 
-         * @static 
-         */
-        public static function nbf(){
-            return \Tymon\JWTAuth\PayloadFactory::nbf();
-        }
-        
-        /**
-         * Set the token ttl (in minutes).
-         *
-         * @param int $ttl
+         * @param string $model
          * @return $this 
          * @static 
          */
-        public static function setTTL($ttl){
-            return \Tymon\JWTAuth\PayloadFactory::setTTL($ttl);
+        public static function setModel($model){
+            return \Cartalyst\Sentinel\Activations\IlluminateActivationRepository::setModel($model);
         }
         
+    }
+
+
+    class Reminder extends \Cartalyst\Sentinel\Laravel\Facades\Reminder{
+        
         /**
-         * Get the token ttl.
+         * {@inheritDoc}
          *
-         * @return int 
          * @static 
          */
-        public static function getTTL(){
-            return \Tymon\JWTAuth\PayloadFactory::getTTL();
+        public static function create($user){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::create($user);
         }
         
         /**
-         * Set the refresh flow.
+         * {@inheritDoc}
          *
-         * @param bool $refreshFlow
+         * @static 
+         */
+        public static function exists($user, $code = null){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::exists($user, $code);
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function complete($user, $code, $password){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::complete($user, $code, $password);
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function removeExpired(){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::removeExpired();
+        }
+        
+        /**
+         * Create a new instance of the model.
+         *
+         * @param array $data
+         * @return mixed 
+         * @static 
+         */
+        public static function createModel($data = array()){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::createModel($data);
+        }
+        
+        /**
+         * Returns the model.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getModel(){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::getModel();
+        }
+        
+        /**
+         * Runtime override of the model.
+         *
+         * @param string $model
          * @return $this 
          * @static 
          */
-        public static function setRefreshFlow($refreshFlow = true){
-            return \Tymon\JWTAuth\PayloadFactory::setRefreshFlow($refreshFlow);
+        public static function setModel($model){
+            return \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository::setModel($model);
+        }
+        
+    }
+
+
+    class Sentinel extends \Cartalyst\Sentinel\Laravel\Facades\Sentinel{
+        
+        /**
+         * Registers a user. You may provide a callback to occur before the user
+         * is saved, or provide a true boolean as a shortcut to activation.
+         *
+         * @param array $credentials
+         * @param \Closure|bool $callback
+         * @return \Cartalyst\Sentinel\Users\UserInteface|bool 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function register($credentials, $callback = null){
+            return \Cartalyst\Sentinel\Sentinel::register($credentials, $callback);
+        }
+        
+        /**
+         * Registers and activates the user.
+         *
+         * @param array $credentials
+         * @return \Cartalyst\Sentinel\Users\UserInteface|bool 
+         * @static 
+         */
+        public static function registerAndActivate($credentials){
+            return \Cartalyst\Sentinel\Sentinel::registerAndActivate($credentials);
+        }
+        
+        /**
+         * Activates the given user.
+         *
+         * @param mixed $user
+         * @return bool 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function activate($user){
+            return \Cartalyst\Sentinel\Sentinel::activate($user);
+        }
+        
+        /**
+         * Checks to see if a user is logged in.
+         *
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function check(){
+            return \Cartalyst\Sentinel\Sentinel::check();
+        }
+        
+        /**
+         * Checks to see if a user is logged in, bypassing checkpoints
+         *
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function forceCheck(){
+            return \Cartalyst\Sentinel\Sentinel::forceCheck();
+        }
+        
+        /**
+         * Checks if we are currently a guest.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function guest(){
+            return \Cartalyst\Sentinel\Sentinel::guest();
+        }
+        
+        /**
+         * Authenticates a user, with "remember" flag.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface|array $credentials
+         * @param bool $remember
+         * @param bool $login
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function authenticate($credentials, $remember = false, $login = true){
+            return \Cartalyst\Sentinel\Sentinel::authenticate($credentials, $remember, $login);
+        }
+        
+        /**
+         * Authenticates a user, with the "remember" flag.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface|array $credentials
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function authenticateAndRemember($credentials){
+            return \Cartalyst\Sentinel\Sentinel::authenticateAndRemember($credentials);
+        }
+        
+        /**
+         * Forces an authentication to bypass checkpoints.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface|array $credentials
+         * @param bool $remember
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function forceAuthenticate($credentials, $remember = false){
+            return \Cartalyst\Sentinel\Sentinel::forceAuthenticate($credentials, $remember);
+        }
+        
+        /**
+         * Forces an authentication to bypass checkpoints, with the "remember" flag.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface|array $credentials
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function forceAuthenticateAndRemember($credentials){
+            return \Cartalyst\Sentinel\Sentinel::forceAuthenticateAndRemember($credentials);
+        }
+        
+        /**
+         * Attempt a stateless authentication.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface|array $credentials
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function stateless($credentials){
+            return \Cartalyst\Sentinel\Sentinel::stateless($credentials);
+        }
+        
+        /**
+         * Attempt to authenticate using HTTP Basic Auth.
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function basic(){
+            return \Cartalyst\Sentinel\Sentinel::basic();
+        }
+        
+        /**
+         * Returns the request credentials.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getRequestCredentials(){
+            return \Cartalyst\Sentinel\Sentinel::getRequestCredentials();
+        }
+        
+        /**
+         * Sets the closure which resolves the request credentials.
+         *
+         * @param \Closure $requestCredentials
+         * @return void 
+         * @static 
+         */
+        public static function setRequestCredentials($requestCredentials){
+            \Cartalyst\Sentinel\Sentinel::setRequestCredentials($requestCredentials);
+        }
+        
+        /**
+         * Sends a response when HTTP basic authentication fails.
+         *
+         * @return mixed 
+         * @throws \RuntimeException
+         * @static 
+         */
+        public static function getBasicResponse(){
+            return \Cartalyst\Sentinel\Sentinel::getBasicResponse();
+        }
+        
+        /**
+         * Sets the callback which creates a basic response.
+         *
+         * @param \Closure $basicResonse
+         * @return void 
+         * @static 
+         */
+        public static function creatingBasicResponse($basicResponse){
+            \Cartalyst\Sentinel\Sentinel::creatingBasicResponse($basicResponse);
+        }
+        
+        /**
+         * Persists a login for the given user.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface $user
+         * @param bool $remember
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function login($user, $remember = false){
+            return \Cartalyst\Sentinel\Sentinel::login($user, $remember);
+        }
+        
+        /**
+         * Persists a login for the given user, with the "remember" flag.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface $user
+         * @return \Cartalyst\Sentinel\Users\UserInterface|bool 
+         * @static 
+         */
+        public static function loginAndRemember($user){
+            return \Cartalyst\Sentinel\Sentinel::loginAndRemember($user);
+        }
+        
+        /**
+         * Logs the current user out.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface $user
+         * @param bool $everywhere
+         * @return bool 
+         * @static 
+         */
+        public static function logout($user = null, $everywhere = false){
+            return \Cartalyst\Sentinel\Sentinel::logout($user, $everywhere);
+        }
+        
+        /**
+         * Pass a closure to Sentinel to bypass checkpoints.
+         *
+         * @param \Closure $callback
+         * @param array $checkpoints
+         * @return mixed 
+         * @static 
+         */
+        public static function bypassCheckpoints($callback, $checkpoints = array()){
+            return \Cartalyst\Sentinel\Sentinel::bypassCheckpoints($callback, $checkpoints);
+        }
+        
+        /**
+         * Checks if checkpoints are enabled.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function checkpointsStatus(){
+            return \Cartalyst\Sentinel\Sentinel::checkpointsStatus();
+        }
+        
+        /**
+         * Enables checkpoints.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function enableCheckpoints(){
+            \Cartalyst\Sentinel\Sentinel::enableCheckpoints();
+        }
+        
+        /**
+         * Disables checkpoints.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function disableCheckpoints(){
+            \Cartalyst\Sentinel\Sentinel::disableCheckpoints();
+        }
+        
+        /**
+         * Add a new checkpoint to Sentinel.
+         *
+         * @param string $key
+         * @param \Cartalyst\Sentinel\Checkpoints\CheckpointInterface $checkpoint
+         * @return void 
+         * @static 
+         */
+        public static function addCheckpoint($key, $checkpoint){
+            \Cartalyst\Sentinel\Sentinel::addCheckpoint($key, $checkpoint);
+        }
+        
+        /**
+         * Removes a checkpoint.
+         *
+         * @param string $key
+         * @return void 
+         * @static 
+         */
+        public static function removeCheckpoint($key){
+            \Cartalyst\Sentinel\Sentinel::removeCheckpoint($key);
+        }
+        
+        /**
+         * Returns the currently logged in user, lazily checking for it.
+         *
+         * @param bool $check
+         * @return \Cartalyst\Sentinel\Users\UserInterface 
+         * @static 
+         */
+        public static function getUser($check = true){
+            return \Cartalyst\Sentinel\Sentinel::getUser($check);
+        }
+        
+        /**
+         * Sets the user associated with Sentinel (does not log in).
+         *
+         * @param \Cartalyst\Sentinel\Users\UserInterface $user
+         * @return void 
+         * @static 
+         */
+        public static function setUser($user){
+            \Cartalyst\Sentinel\Sentinel::setUser($user);
+        }
+        
+        /**
+         * Returns the user repository.
+         *
+         * @return \Cartalyst\Sentinel\Users\UserRepositoryInterface 
+         * @static 
+         */
+        public static function getUserRepository(){
+            return \Cartalyst\Sentinel\Sentinel::getUserRepository();
+        }
+        
+        /**
+         * Sets the user repository.
+         *
+         * @param \Cartalyst\Sentinel\Users\UserRepositoryInterface $users
+         * @return void 
+         * @static 
+         */
+        public static function setUserRepository($users){
+            \Cartalyst\Sentinel\Sentinel::setUserRepository($users);
+        }
+        
+        /**
+         * Returns the role repository.
+         *
+         * @return \Cartalyst\Sentinel\Roles\RoleRepositoryInterface 
+         * @static 
+         */
+        public static function getRoleRepository(){
+            return \Cartalyst\Sentinel\Sentinel::getRoleRepository();
+        }
+        
+        /**
+         * Sets the role repository.
+         *
+         * @param \Cartalyst\Sentinel\Roles\RoleRepositoryInterface $roles
+         * @return void 
+         * @static 
+         */
+        public static function setRoleRepository($roles){
+            \Cartalyst\Sentinel\Sentinel::setRoleRepository($roles);
+        }
+        
+        /**
+         * Returns the persistences repository.
+         *
+         * @return \Cartalyst\Sentinel\Persistences\PersistenceRepositoryInterface 
+         * @static 
+         */
+        public static function getPersistenceRepository(){
+            return \Cartalyst\Sentinel\Sentinel::getPersistenceRepository();
+        }
+        
+        /**
+         * Sets the persistences repository.
+         *
+         * @param \Cartalyst\Sentinel\Persistences\PersistenceRepositoryInterface $persistences
+         * @return void 
+         * @static 
+         */
+        public static function setPersistenceRepository($persistences){
+            \Cartalyst\Sentinel\Sentinel::setPersistenceRepository($persistences);
+        }
+        
+        /**
+         * Returns the activations repository.
+         *
+         * @return \Cartalyst\Sentinel\Activations\ActivationRepositoryInterface 
+         * @static 
+         */
+        public static function getActivationRepository(){
+            return \Cartalyst\Sentinel\Sentinel::getActivationRepository();
+        }
+        
+        /**
+         * Sets the activations repository.
+         *
+         * @param \Cartalyst\Sentinel\Activations\ActivationRepositoryInterface $activations
+         * @return void 
+         * @static 
+         */
+        public static function setActivationRepository($activations){
+            \Cartalyst\Sentinel\Sentinel::setActivationRepository($activations);
+        }
+        
+        /**
+         * Returns the reminders repository.
+         *
+         * @return \Cartalyst\Sentinel\Reminders\ReminderRepositoryInterface 
+         * @static 
+         */
+        public static function getReminderRepository(){
+            return \Cartalyst\Sentinel\Sentinel::getReminderRepository();
+        }
+        
+        /**
+         * Sets the reminders repository.
+         *
+         * @param \Cartalyst\Sentinel\Reminders\ReminderRepositoryInterface $reminders
+         * @return void 
+         * @static 
+         */
+        public static function setReminderRepository($reminders){
+            \Cartalyst\Sentinel\Sentinel::setReminderRepository($reminders);
+        }
+        
+        /**
+         * Returns the throttle repository.
+         *
+         * @return \Cartalyst\Sentinel\Throttling\ThrottleRepositoryInterface 
+         * @static 
+         */
+        public static function getThrottleRepository(){
+            return \Cartalyst\Sentinel\Sentinel::getThrottleRepository();
+        }
+        
+        /**
+         * Sets the throttle repository.
+         *
+         * @param \Cartalyst\Sentinel\Throttling\ThrottleRepositoryInterface $throttle
+         * @return void 
+         * @static 
+         */
+        public static function setThrottleRepository($throttle){
+            \Cartalyst\Sentinel\Sentinel::setThrottleRepository($throttle);
+        }
+        
+        /**
+         * Returns the event dispatcher.
+         *
+         * @return \Illuminate\Events\Dispatcher 
+         * @static 
+         */
+        public static function getDispatcher(){
+            return \Cartalyst\Sentinel\Sentinel::getDispatcher();
+        }
+        
+        /**
+         * Sets the event dispatcher instance.
+         *
+         * @param \Illuminate\Events\Dispatcher $dispatcher
+         * @return $this 
+         * @static 
+         */
+        public static function setDispatcher($dispatcher){
+            return \Cartalyst\Sentinel\Sentinel::setDispatcher($dispatcher);
+        }
+        
+        /**
+         * Returns the event dispatcher status.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function getDispatcherStatus(){
+            return \Cartalyst\Sentinel\Sentinel::getDispatcherStatus();
+        }
+        
+        /**
+         * Sets the event dispatcher status.
+         *
+         * @param bool $status
+         * @return $this 
+         * @static 
+         */
+        public static function setDispatcherStatus($status){
+            return \Cartalyst\Sentinel\Sentinel::setDispatcherStatus($status);
+        }
+        
+        /**
+         * Enables the event dispatcher.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function enableDispatcher(){
+            return \Cartalyst\Sentinel\Sentinel::enableDispatcher();
+        }
+        
+        /**
+         * Disables the event dispatcher.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function disableDispatcher(){
+            return \Cartalyst\Sentinel\Sentinel::disableDispatcher();
         }
         
     }

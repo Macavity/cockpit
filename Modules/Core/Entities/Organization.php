@@ -3,8 +3,16 @@
 namespace Modules\Core\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Organization extends Model
 {
-    protected $fillable = [];
+    use SoftDeletes;
+
+    protected $fillable = ['name'];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

@@ -3,7 +3,14 @@
 namespace Modules\Core\Providers;
 
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Blade;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Composers\NavigationComposer;
+use Modules\Core\Http\Middleware\CoreAuthenticate;
+use Modules\Core\Http\Middleware\CoreGuest;
+use Modules\Core\Http\Middleware\CoreUserHasAccess;
+use Modules\Core\Http\Middleware\CoreUserInRole;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -15,15 +22,29 @@ class CoreServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'core.guest' => CoreGuest::class,
+        'core.auth' => CoreAuthenticate::class,
+        'core.role' => CoreUserInRole::class,
+        'core.access' => CoreUserHasAccess::class,
+    ];
+
+    /**
      * Boot the application events.
      *
      * @return void
      */
     public function boot()
     {
+        $this->registerMiddleware();
         $this->registerTranslations();
         $this->registerConfig();
+        $this->registerNavigationComposer();
         $this->registerViews();
+        $this->registerViewHelpers();
 
         $this->registerThemes();
         $this->registerThemeViews();
@@ -39,6 +60,26 @@ class CoreServiceProvider extends ServiceProvider
         if ($this->app->environment() !== 'production') {
             $this->app->register(IdeHelperServiceProvider::class);
         }
+    }
+
+    /**
+     * Register the filters.
+     *
+     * @return void
+     */
+    public function registerMiddleware()
+    {
+        foreach ($this->routeMiddleware as $key => $middleware) {
+            $this->app['router']->middleware($key, $middleware);
+        }
+    }
+
+    public function registerNavigationComposer()
+    {
+        view()->composer('layouts.partials.navbar-top', NavigationComposer::class);
+        view()->composer('layouts.partials.navbar-user', NavigationComposer::class);
+        view()->composer('layouts.partials.sidebar', NavigationComposer::class);
+        view()->composer('layouts.master', NavigationComposer::class);
     }
 
     public function registerThemes()
@@ -75,6 +116,18 @@ class CoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'core'
         );
+    }
+
+    public function registerViewHelpers()
+    {
+        Blade::directive('role', function($expression) {
+            return "<?php if (\\Sentinel::inRole({$expression})) : ?>";
+        });
+
+        // Call to Entrust::can
+        Blade::directive('access', function($expression) {
+            return "<?php if (\\Sentinel::hasAccess({$expression})) : ?>";
+        });
     }
 
     /**
