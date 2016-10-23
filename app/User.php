@@ -2,51 +2,47 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
+use Modules\Core\Entities\HasUuid;
+use Modules\Core\Entities\Organization;
 
-/**
- * App\User
- *
- * @property integer $id
- * @property string $name
- * @property string $email
- * @property string $password
- * @property string $remember_token
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- */
-class User extends Authenticatable
+class User extends EloquentUser
 {
+    use Notifiable, SoftDeletes, Authenticatable, CanResetPassword, HasUuid;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'permissions', 'organization_id'
     ];
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'id', 'password', 'remember_token',
     ];
 
-    public function uuid()
+    public function getFullName()
     {
-        return $this->uuid;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function email()
+    public function hasOrganization()
     {
-        return $this->email;
+        return !empty($this->organization_id);
     }
 
-    public function name()
-    {
-        return $this->name;
+    public function organization() {
+        return $this->belongsTo(Organization::class);
     }
 }

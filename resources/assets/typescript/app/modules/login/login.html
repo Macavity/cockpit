@@ -1,8 +1,8 @@
-<form (submit)="login($event, email.value, password.value)">
+<form (submit)="login($event, email.value, password.value)" class="login-form">
   <div class="panel panel-body login-form">
     <div class="text-center">
       <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
-      <h5 class="content-group">
+      <h5 class="content-group login-form__header">
         Login to your account
         <small class="display-block">Enter your credentials below</small>
       </h5>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="text-center">
-      <a routerLink="/password/reset">Forgot password?</a>
+      <a routerLink="/password/reset" class="login-form__forgot">Forgot password?</a>
     </div>
   </div>
 </form>

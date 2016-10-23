@@ -1,0 +1,17 @@
+{
+  "name": "Core",
+  "alias": "core",
+  "description": "",
+  "keywords": [],
+  "active": 1,
+  "order": 0,
+  "providers": [
+    "Modules\\Core\\Providers\\CoreServiceProvider"
+  ],
+  "aliases": {},
+  "files": [
+    "constants.php",
+    "start.php",
+    "Database/CoreFactory.php"
+  ]
+}

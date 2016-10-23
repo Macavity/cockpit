@@ -1,5 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-  @include('partials.frontend_app')
+  <app>
+    @include('partials.navbar')
+    @include('partials.loading')
+  </app>
 @endsection

@@ -1,12 +1,13 @@
-//process.env.DISABLE_NOTIFIER = true;
-
-var Elixir = require('laravel-elixir');
+const Elixir = require('laravel-elixir');
 
 const gulp = require('gulp');
 
 require('laravel-elixir-webpack-ex');
 var webpack = require('webpack');
 
+// Load ".env" file
+require('dotenv').config();
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -140,7 +141,7 @@ Elixir(function(mix) {
     }, 'public/js', 'resources/assets/typescript');
 
     mix.browserSync({
-        proxy: 'cockpit.local'
+        proxy: process.env.BROWSERSYNC_PROXY
     });
 
 });
